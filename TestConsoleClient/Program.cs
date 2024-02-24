@@ -9,7 +9,7 @@ namespace TestConsoleClient
         {
             StringContent content = new StringContent("Tony");
             // определяем данные запроса
-            using var requestPost = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7164/api/Home");
+            using var requestPost = new HttpRequestMessage(HttpMethod.Get, "https://localhost:7164/api/users/GetUser");
             // установка отправляемого содержимого
             requestPost.Content = content;
             // отправляем запрос
@@ -24,8 +24,6 @@ namespace TestConsoleClient
 
             //string responseTextGet = await responseGet.Content.ReadAsStringAsync();
             //Console.WriteLine(responseTextGet);
-
-            Console.ReadKey();
         }
     }
 }
