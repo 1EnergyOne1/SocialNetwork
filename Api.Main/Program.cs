@@ -2,7 +2,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-//builder.Services.AddControllers();
+//builder.Services.AddControllersWithViews();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -24,13 +25,20 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.MapGet("/", () => "Hello World!");
+app.MapControllers();
 
-app.MapPost("/data", async (HttpContext httpContext) =>
-{
-    using StreamReader reader = new StreamReader(httpContext.Request.Body);
-    string name = await reader.ReadToEndAsync();
-    return $"Получены данные: {name}";
-});
+//app.MapGet("/", () => "Hello World!");
+
+//app.MapPost("/data", async (HttpContext httpContext) =>
+//{
+//    using StreamReader reader = new StreamReader(httpContext.Request.Body);
+//    string name = await reader.ReadToEndAsync();
+//    return $"Получены данные: {name}";
+//});
+
+//app.MapControllerRoute(
+//    name: "default",
+//    pattern: "{controller=Home}/{action=Get}");
+
 
 app.Run();
