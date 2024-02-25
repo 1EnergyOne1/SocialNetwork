@@ -25,6 +25,13 @@ namespace Api.Main.Controllers
             return "Заглушка. Информация о пользователе с id";
         }
 
+        [Route("GetUserWitDateBirth")]
+        [HttpGet]
+        public string GetUserWitDateBirth([FromQuery]string dateBirth)
+        {
+            return "Заглушка. Информация о пользователе с id";
+        }
+
         [Route("AddUser")]
         [HttpPost]
         public bool AddUser([FromQuery] string name, [FromQuery] string lastName, [FromQuery] int age, [FromBody]int[] jsonContent)

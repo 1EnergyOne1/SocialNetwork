@@ -5,6 +5,8 @@ import { Injectable } from "@angular/core";
 export class UserServices {
     constructor(private _http: HttpClient) { }
     getUser() {
-        return this._http.get("https://localhost:7164/api/users/GetUser");
+        let date = new Date();
+        let dateNumber = date.toString();
+        return this._http.get(`https://localhost:7164/api/users/GetUserWitDateBirth?dateBirth=${dateNumber}`);
     }
 }

@@ -15,7 +15,7 @@ export class UserInfoComponent {
 
   getResponse() {
     this._UserServices.getUser().subscribe({next: (data:any) =>{
-      this.response = data;
+      this.response = data.result;
     }})
   }
 }
