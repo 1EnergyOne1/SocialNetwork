@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Main", "Api.Main\Api.Main.csproj", "{F8289792-1763-443E-B961-779E56FF916C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Main", "Api.Main\Api.Main.csproj", "{F8289792-1763-443E-B961-779E56FF916C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleClient", "TestConsoleClient\TestConsoleClient.csproj", "{3E365994-DE25-483E-B60B-757A0807D7A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsoleClient", "TestConsoleClient\TestConsoleClient.csproj", "{3E365994-DE25-483E-B60B-757A0807D7A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebClientMVC", "WebClientMVC\WebClientMVC.csproj", "{371A96BA-A790-462E-98DE-55A0A69372C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebClientMVC", "WebClientMVC\WebClientMVC.csproj", "{371A96BA-A790-462E-98DE-55A0A69372C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFClient", "WPFClient\WPFClient.csproj", "{E3AC71EA-A558-4496-A0BD-9C76A1ACFB82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFClient", "WPFClient\WPFClient.csproj", "{E3AC71EA-A558-4496-A0BD-9C76A1ACFB82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
