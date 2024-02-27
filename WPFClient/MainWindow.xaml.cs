@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Api.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFClient.Interface;
+using WPFClient.Service;
 
 namespace WPFClient
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
+    public partial class MainWindow : Window, IAuth
+    {        
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void getAuthorization(object sender, RoutedEventArgs e)
+        {
+            var login = "energyone";
+            var password = "password";
+            var res = Authorization.GetUser(login, password);
         }
     }
 }

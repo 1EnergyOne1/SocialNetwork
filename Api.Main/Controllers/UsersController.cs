@@ -13,8 +13,8 @@ namespace Api.Main.Controllers
         private readonly Users users;
 
         [Route("GetUser")]
-        [HttpGet]
-        public User GetUser([FromBody] User user)
+        [HttpPost]
+        public User GetUser([FromBody] string user)
         {
             return users.GetUsers(user);
         }
