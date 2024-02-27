@@ -1,4 +1,5 @@
-﻿using Api.Main.Services;
+﻿using Api.Data.Models;
+using Api.Main.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,13 +10,13 @@ namespace Api.Main.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        Users users = new Users();
+        private readonly Users users;
 
         [Route("GetUser")]
         [HttpGet]
-        public string GetUser()
+        public User GetUser([FromBody] User user)
         {
-            return users.GetUsers();
+            return users.GetUsers(user);
         }
 
         [Route("GetUserWithId")]
@@ -42,6 +43,13 @@ namespace Api.Main.Controllers
             }
             else
                 return false;
+        }
+
+        [Route("AddUserWithModel")]
+        [HttpPost]
+        public User AddUserWithModel([FromBody] User user)
+        {
+            return user;
         }
     }
 }
