@@ -8,22 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WPFClient.Service
-{
-    public static class Authorization
+{    
+    public class Authorization
     {
-        static HttpClient httpClient = new HttpClient();
-        public static async Task<User> GetUser(string login, string password)
+        private readonly WPFClient.Repository.Authorization authorization = new Repository.Authorization();
+        public async Task<User> GetUser(string login, string password)
         {
-            User user = new User();
-            user.login = login;
-            user.password = password;
-            StringContent content = new StringContent("Tony");
-            //using var requestPost = await httpClient.Post("https://localhost:7164/api/users/GetUser");
-            using var requestPost = new HttpRequestMessage(HttpMethod.Post, "https://localhost:7164/api/users/GetUser");
-            requestPost.Content = content;
-            using var response = await httpClient.SendAsync(requestPost);
-            var result = await requestPost.Content.ReadFromJsonAsync<User>();
-            return user;
+            return await authorization.GetUser(login, password);
         }
     }
 }

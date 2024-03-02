@@ -15,8 +15,8 @@
         </Grid.Background>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="145,174,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="145,244,0,0" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox HorizontalAlignment="Left" Margin="280,182,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="280,248,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" x:Name="log" ToolTip="Введите логин" Margin="280,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="Login"/>
+        <TextBox HorizontalAlignment="Left" x:Name="pass" ToolTip="Введите пароль" Margin="280,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="Password"/>
         <Button Content="Авторизация" HorizontalAlignment="Left" Margin="570,217,0,0" VerticalAlignment="Top" Foreground="White" Click="getAuthorization">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

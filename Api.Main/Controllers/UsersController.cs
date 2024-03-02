@@ -10,13 +10,13 @@ namespace Api.Main.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly Users users;
+        private readonly Users users = new Users();
 
         [Route("GetUser")]
-        [HttpPost]
-        public User GetUser([FromBody] string user)
+        [HttpGet]
+        public User GetUser([FromQuery] string login, [FromQuery] string password)
         {
-            return users.GetUsers(user);
+            return users.GetUsers(login, password);
         }
 
         [Route("GetUserWithId")]

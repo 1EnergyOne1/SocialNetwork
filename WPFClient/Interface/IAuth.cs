@@ -8,11 +8,8 @@ using WPFClient.Service;
 
 namespace WPFClient.Interface
 {
-    internal interface IAuth
-    {        
-        public Task<User> GetUser(string login, string password)
-        {
-            return Authorization.GetUser(login, password);
-        }
+    public partial interface IAuth
+    {
+        public Task<User> GetUser(string login, string password);
     }
 }

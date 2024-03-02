@@ -11,8 +11,4 @@
     <ProjectReference Include="..\Api.Data\Api.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
 </Project>

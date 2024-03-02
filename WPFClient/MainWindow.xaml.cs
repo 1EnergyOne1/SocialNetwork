@@ -1,28 +1,25 @@
 ﻿using Api.Data.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPFClient.Interface;
 using WPFClient.Service;
+using WPFClient.vm;
 
 namespace WPFClient
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IAuth
-    {        
+    public partial class MainWindow : Window
+    {
+        UserVM userVM = new UserVM();
+        
+
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -30,9 +27,17 @@ namespace WPFClient
 
         private void getAuthorization(object sender, RoutedEventArgs e)
         {
-            var login = "energyone";
-            var password = "password";
-            var res = Authorization.GetUser(login, password);
+            userVM.getAuthorization();
+        }
+
+        private void Login(object sender, TextChangedEventArgs e)
+        {
+            userVM.Login = Convert.ToString(log.Text);
+        }
+
+        private void Password(object sender, TextChangedEventArgs e)
+        {
+            userVM.Password = Convert.ToString(pass.Text);
         }
     }
 }

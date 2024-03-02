@@ -4,20 +4,16 @@ namespace Api.Main.Services
 {
     public class Users
     {
-        public User GetUsers(string user)
+        public User GetUsers(string login, string password)
         {   
-            //var res = user.
-            //if(user.Name == null)
-            //    user.Name = "Антон";
-            //if(user.LastName == null)
-            //    user.LastName = "Бойко";
-            //if(user.Age == null)
-            //    user.Age = 28;
-            //if(user.login == null)
-            //    user.login = "energyone";
-            //if(user.password == null)
-            //    user.password = "password";
-            return new User();
+           User user = new User();
+                user.Name = "Антон";
+                user.LastName = "Бойко";
+                user.Age = 28;
+                user.login = login;
+            if(user.password == null)
+                user.password = password;
+            return user;
         }
     }
 }
