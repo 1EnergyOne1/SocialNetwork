@@ -19,7 +19,7 @@ namespace WPFClient.vm
         public string Login { get; set; }
         public string Password { get; set; }        
 
-        public void getAuthorization()
+        public bool getAuthorization()
         {
             var login = Login;
             var password = Password;
@@ -27,10 +27,13 @@ namespace WPFClient.vm
             if (res != null)
             {
                 UserPage page = new UserPage();
-                MainWindow main = new MainWindow();
-                main.Close();
+                MainWindow main = new MainWindow();                
                 page.Show();
-
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
