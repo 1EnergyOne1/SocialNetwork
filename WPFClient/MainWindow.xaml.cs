@@ -27,7 +27,11 @@ namespace WPFClient
 
         private void getAuthorization(object sender, RoutedEventArgs e)
         {
-            userVM.getAuthorization();
+           var res = userVM.getAuthorization();
+            if(res == true)
+            {
+                this.Close();
+            }
         }
 
         private void Login(object sender, TextChangedEventArgs e)

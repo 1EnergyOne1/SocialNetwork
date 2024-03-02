@@ -24,6 +24,11 @@ namespace WPFClient
             InitializeComponent();
         }
 
-
+        private void UnAuthorize(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
     }
 }

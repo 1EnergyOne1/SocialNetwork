@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFClient"
         mc:Ignorable="d"
-        Title="UserPage" Height="450" Width="800">
+        Title="UserPage" Height="1000" Width="1000" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="">
     <Grid>
         <Label Content="EnergyOne" HorizontalAlignment="Center" Margin="0,10,0,0" Width="250" Height="59" VerticalAlignment="Top" FontSize="36" FontFamily="Arial Black" Cursor="Arrow">
             <Label.Foreground>
@@ -23,7 +23,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button Content="Выход" HorizontalAlignment="Left" Margin="720,29,0,0" VerticalAlignment="Top" Height="29" Width="65" Foreground="White">
+        <Button Content="Выход" HorizontalAlignment="Left" Margin="720,29,0,0" VerticalAlignment="Top" Height="29" Width="65" Foreground="White" Click="UnAuthorize">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
