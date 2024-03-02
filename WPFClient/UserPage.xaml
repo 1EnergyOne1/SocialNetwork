@@ -1,0 +1,56 @@
+﻿<Window x:Class="WPFClient.UserPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFClient"
+        mc:Ignorable="d"
+        Title="UserPage" Height="450" Width="800">
+    <Grid>
+        <Label Content="EnergyOne" HorizontalAlignment="Center" Margin="0,10,0,0" Width="250" Height="59" VerticalAlignment="Top" FontSize="36" FontFamily="Arial Black" Cursor="Arrow">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF466CFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Button Content="Инфо" HorizontalAlignment="Left" Margin="650,29,0,0" VerticalAlignment="Top" Height="29" Width="65" Foreground="White">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF415EFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Выход" HorizontalAlignment="Left" Margin="720,29,0,0" VerticalAlignment="Top" Height="29" Width="65" Foreground="White">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF415EFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TabControl Margin="0,63,0,0">
+            <TabItem Header="Главная">
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="#FF3D16FF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Content="Имя" HorizontalAlignment="Left" Margin="20,75,0,0" VerticalAlignment="Top" Foreground="White" Width="35"/>
+                    <Label Content="Фамилия" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Foreground="White"/>
+                    <Label Content="Возраст" HorizontalAlignment="Left" Margin="20,246,0,0" VerticalAlignment="Top" Foreground="White" Width="52"/>
+                    <TextBox HorizontalAlignment="Left" Margin="132,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox HorizontalAlignment="Left" Margin="132,0,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="120"/>
+                    <TextBox HorizontalAlignment="Left" Margin="132,249,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Сообщения">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

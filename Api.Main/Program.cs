@@ -5,6 +5,8 @@ builder.Services.AddRazorPages();
 //builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
 
+builder.Services.AddCors();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +26,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.UseCors(builder => builder.AllowAnyOrigin());
 
 app.MapControllers();
 
