@@ -1,4 +1,5 @@
 ﻿using Api.Data.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NodaTime;
 
@@ -7,11 +8,12 @@ namespace Api.Main.Repository
     public partial class Users
     {
        SocialhubContext db = new SocialhubContext();
-        public Task<User?> GetUsers(string login, string password, CancellationToken ct)
+        public ActionResult<User?> GetUsers(string login, string password, CancellationToken ct)
         {
             try
             {
-                return db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefaultAsync(ct);
+                var res = db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefaultAsync(ct);
+                return res;
             }
             catch (Exception ex)
             {

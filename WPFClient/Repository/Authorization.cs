@@ -13,10 +13,10 @@ namespace WPFClient.Repository
     public partial class Authorization
     {
         HttpClient httpClient = new HttpClient();
-        public async Task<User> GetUser(string login, string password)
+        public async Task<User> GetUserAsync(string login, string password)
         {
-            using var requestPost = await httpClient.GetAsync($"https://localhost:7164/api/users/GetUser?login={login}&password={password}");
-            var result = await requestPost.Content.ReadFromJsonAsync<User>();
+            using var request = await httpClient.GetAsync($"https://localhost:7164/api/users/GetUser?login={login}&password={password}");
+            var result = await request.Content.ReadFromJsonAsync<User>();
             return result;
         }
     }

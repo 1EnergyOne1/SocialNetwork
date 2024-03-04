@@ -14,7 +14,7 @@ namespace Api.Main.Controllers
 
         [Route("GetUser")]
         [HttpGet]
-        public Task<User?> GetUser([FromQuery] string login, [FromQuery] string password, CancellationToken ct)
+        public ActionResult<User?> GetUser([FromQuery] string login, [FromQuery] string password, CancellationToken ct)
         {
             return users.GetUsers(login, password, ct);
         }
