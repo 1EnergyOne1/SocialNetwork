@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Api.Main;
+namespace Api.Data.Models;
 
 public partial class SocialhubContext : DbContext
 {
@@ -36,9 +36,15 @@ public partial class SocialhubContext : DbContext
             entity.Property(e => e.Lastname)
                 .HasMaxLength(30)
                 .HasColumnName("lastname");
+            entity.Property(e => e.Login)
+                .HasMaxLength(30)
+                .HasColumnName("login");
             entity.Property(e => e.Name)
                 .HasMaxLength(30)
                 .HasColumnName("name");
+            entity.Property(e => e.Password)
+                .HasMaxLength(30)
+                .HasColumnName("password");
         });
 
         OnModelCreatingPartial(modelBuilder);

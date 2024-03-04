@@ -1,14 +1,24 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using NodaTime;
 
-namespace Api.Data.Models
+namespace Api.Data.Models;
+
+public partial class User
 {
-    public class User : UserAccount
-    {
-        [Key]
-        public string Name { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
-        public DateTime DateCreate { get; set; }
-        public bool isAdmin { get; set; }
-    }
+    public int Id { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public string? Lastname { get; set; }
+
+    public string Login { get; set; } = null!;
+
+    public string Password { get; set; } = null!;
+
+    public int? Age { get; set; }
+
+    public LocalDateTime Datecreate { get; set; }
+
+    public bool Isadmin { get; set; }
 }
