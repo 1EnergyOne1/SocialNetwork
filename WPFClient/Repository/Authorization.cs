@@ -18,7 +18,7 @@ namespace WPFClient.Repository
             User user = new User();
             user.login = login;
             user.password = password;
-            using var requestPost = await httpClient.GetAsync("https://localhost:7164/api/users/GetUser?login=energyone&password=password");           
+            using var requestPost = await httpClient.GetAsync($"https://localhost:7164/api/users/GetUser?login={login}&password={password}");
             var result = await requestPost.Content.ReadFromJsonAsync<User>();
             return user;
         }

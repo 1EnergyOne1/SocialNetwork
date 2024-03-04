@@ -11,5 +11,7 @@ namespace Api.Data.Models
         public string Name { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
+        public DateTime Created { get; set; }
+        public bool isAdmin { get; set; }
     }
 }
