@@ -21,22 +21,19 @@ namespace Api.Main.Repository
             }
         }
 
-        public User AddUser(string login, string password, bool isAdmin)
+        public async Task<User> AddUser(User user, CancellationToken ct)
         {
             try
-            {
-                User user = new User();
-                user.Name = login;
-                user.Login = login;
-                user.Password = password;
-                if(isAdmin)
+            {                
+                if(user.Isadmin)
                 {
                     user.Isadmin = false;
                 }                
                 user.Datecreate = new LocalDateTime();
                 db.Users.Add(user);
                 db.SaveChanges();
-                return user;
+                var res = await db.Users.Where(x => x.Login == user.Login && x.Password == user.Password).FirstOrDefaultAsync(ct);
+                return res;
             }
             catch (Exception ex)
             {

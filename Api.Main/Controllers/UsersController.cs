@@ -20,37 +20,11 @@ namespace Api.Main.Controllers
             return res;
         }
 
-        [Route("GetUserWithId")]
-        [HttpGet]
-        public string GetUserWithId()
-        {
-            return "Заглушка. Информация о пользователе с id";
-        }
-
-        [Route("GetUserWitDateBirth")]
-        [HttpGet]
-        public string GetUserWitDateBirth([FromQuery]string dateBirth)
-        {
-            return "Заглушка. Информация о пользователе с id";
-        }
-
         [Route("AddUser")]
         [HttpPost]
-        public bool AddUser([FromQuery] string name, [FromQuery] string lastName, [FromQuery] int age, [FromBody]int[] jsonContent)
+        public async Task<ActionResult<User>> AddUser([FromBody] User user, CancellationToken ct)
         {
-            if (!String.IsNullOrEmpty(name) && !String.IsNullOrEmpty(lastName) && age != null)
-            {
-                return true;//$"Пользователь с именем {name}, фамилией {lastName} и возврастом {age} добавлен";
-            }
-            else
-                return false;
-        }
-
-        [Route("AddUserWithModel")]
-        [HttpPost]
-        public User AddUserWithModel([FromBody] User user)
-        {
-            return user;
+            return await users.AddUser(user, ct);
         }
     }
 }
