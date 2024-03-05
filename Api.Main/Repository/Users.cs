@@ -8,7 +8,7 @@ namespace Api.Main.Repository
     public partial class Users
     {
        SocialhubContext db = new SocialhubContext();
-        public async Task<User?> GetUsers(string login, string password, CancellationToken ct)
+        public async Task<User> GetUsers(string login, string password, CancellationToken ct)
         {
             try
             {

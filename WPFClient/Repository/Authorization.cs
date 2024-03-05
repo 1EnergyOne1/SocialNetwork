@@ -1,4 +1,5 @@
 ﻿using Api.Data.Models;
+using NodaTime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,18 +7,25 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace WPFClient.Repository
 {
-    public partial class Authorization
+    internal class Authorization
     {
-        HttpClient httpClient = new HttpClient();
+        private HttpClient httpClient = new HttpClient();
+        private static readonly JsonSerializerOptions serializerOptions = new JsonSerializerOptions();
         public async Task<User> GetUserAsync(string login, string password)
         {
-            //using var request = await httpClient.GetAsync($"https://localhost:7164/api/users/GetUser?login={login}&password={password}");
-            //var result = await request.Content.ReadFromJsonAsync<User>();
-            return await GetAsync<User>(parameters: ("GetUser", login)).ConfigureAwait(false);
+            var response = await httpClient.GetAsync($"https://localhost:7164/api/users/GetUser?login={login}&password={password}").ConfigureAwait(false);
+            var result = Deserialize(await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false));
+            return result;
+        }
+
+        private static User Deserialize(byte[] jsonContent)
+        {
+            return JsonSerializer.Deserialize<User>(jsonContent, serializerOptions);
         }
     }
 }
