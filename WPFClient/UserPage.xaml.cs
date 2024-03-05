@@ -38,5 +38,11 @@ namespace WPFClient
             main.Show();
             this.Close();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AddUser addUser = new AddUser();
+            addUser.Show();
+        }
     }
 }

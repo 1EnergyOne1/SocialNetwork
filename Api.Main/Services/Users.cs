@@ -10,5 +10,10 @@ namespace Api.Main.Services
         {  
             return users.GetUsers(login, password, ct);
         }
+
+        public Task<User> AddUser(User user, CancellationToken ct)
+        {
+            return users.AddUser(user, ct);
+        }
     }
 }
