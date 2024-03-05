@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Api.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,16 @@ namespace WPFClient
     /// </summary>
     public partial class UserPage : Window
     {
+        public User User { get; set; }
         public UserPage()
         {
             InitializeComponent();
+        }
+
+        public UserPage(User user)
+        {
+            InitializeComponent();
+            User = user;
         }
 
         private void UnAuthorize(object sender, RoutedEventArgs e)

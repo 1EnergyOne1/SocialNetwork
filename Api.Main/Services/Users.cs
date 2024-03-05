@@ -1,19 +1,14 @@
 ﻿using Api.Data.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Main.Services
 {
     public class Users
     {
-        public User GetUsers(string login, string password)
-        {   
-           User user = new User();
-                user.Name = "Антон";
-                user.LastName = "Бойко";
-                user.Age = 28;
-                user.login = login;
-            if(user.password == null)
-                user.password = password;
-            return user;
+        Repository.Users users = new Repository.Users();
+        public Task<User> GetUsers(string login, string password, CancellationToken ct)
+        {  
+            return users.GetUsers(login, password, ct);
         }
     }
 }
