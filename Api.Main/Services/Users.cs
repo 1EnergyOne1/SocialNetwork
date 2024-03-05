@@ -6,7 +6,7 @@ namespace Api.Main.Services
     public class Users
     {
         Repository.Users users = new Repository.Users();
-        public ActionResult<User?> GetUsers(string login, string password, CancellationToken ct)
+        public Task<User?> GetUsers(string login, string password, CancellationToken ct)
         {  
             return users.GetUsers(login, password, ct);
         }

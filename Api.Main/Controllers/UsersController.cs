@@ -14,9 +14,10 @@ namespace Api.Main.Controllers
 
         [Route("GetUser")]
         [HttpGet]
-        public ActionResult<User?> GetUser([FromQuery] string login, [FromQuery] string password, CancellationToken ct)
+        public Task<ActionResult<User?>> GetUser([FromQuery] string login, [FromQuery] string password, CancellationToken ct)
         {
-            return users.GetUsers(login, password, ct);
+            var res =  this.GetOldTypeResultAsync<User?>(users.GetUsers(login, password, ct));
+            return res;
         }
 
         [Route("GetUserWithId")]

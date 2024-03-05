@@ -8,11 +8,11 @@ namespace Api.Main.Repository
     public partial class Users
     {
        SocialhubContext db = new SocialhubContext();
-        public ActionResult<User?> GetUsers(string login, string password, CancellationToken ct)
+        public async Task<User?> GetUsers(string login, string password, CancellationToken ct)
         {
             try
             {
-                var res = db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefaultAsync(ct);
+                var res = await db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefaultAsync(ct);
                 return res;
             }
             catch (Exception ex)
@@ -43,5 +43,7 @@ namespace Api.Main.Repository
                 return null;
             }
         }
+
+        
     }
 }

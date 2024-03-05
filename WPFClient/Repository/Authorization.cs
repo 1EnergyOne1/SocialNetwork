@@ -15,9 +15,9 @@ namespace WPFClient.Repository
         HttpClient httpClient = new HttpClient();
         public async Task<User> GetUserAsync(string login, string password)
         {
-            using var request = await httpClient.GetAsync($"https://localhost:7164/api/users/GetUser?login={login}&password={password}");
-            var result = await request.Content.ReadFromJsonAsync<User>();
-            return result;
+            //using var request = await httpClient.GetAsync($"https://localhost:7164/api/users/GetUser?login={login}&password={password}");
+            //var result = await request.Content.ReadFromJsonAsync<User>();
+            return await GetAsync<User>(parameters: ("GetUser", login)).ConfigureAwait(false);
         }
     }
 }
