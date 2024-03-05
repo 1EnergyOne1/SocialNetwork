@@ -21,4 +21,23 @@ public partial class User
     public LocalDateTime Datecreate { get; set; }
 
     public bool Isadmin { get; set; }
+
+    public static explicit operator User(DtoUser? v)
+    {
+        if(v is null) return null;
+        else
+        {
+            return new User
+            {
+                Id = v.id,
+                Name = v.name,
+                Lastname = v.lastname,
+                Login = v.login,
+                Password = v.password,
+                Age = v.age,
+                Datecreate = v.datecreate,
+                Isadmin = v.isadmin
+            };
+        }
+    }
 }

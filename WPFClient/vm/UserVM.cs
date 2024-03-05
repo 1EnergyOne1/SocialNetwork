@@ -19,11 +19,11 @@ namespace WPFClient.vm
         public string Login { get; set; }
         public string Password { get; set; }        
 
-        public async Task<bool> getAuthorizationAsync()
+        public bool getAuthorizationAsync()
         {
             var login = Login;
             var password = Password;
-            var res = await auth.GetUser(login, password);
+            var res = auth.GetUser(login, password);
             if (res.Id != null)
             {
                 UserPage page = new UserPage();

@@ -11,11 +11,10 @@ namespace WPFClient.Service
 {    
     public class Authorization
     {
-        private readonly WPFClient.Repository.Authorization authorization = new Repository.Authorization();
+        private readonly Repository.Authorization authorization = new Repository.Authorization();
         public async Task<User?> GetUser(string login, string password)
         {
-            var res =  await authorization.GetUserAsync(login, password);
-            return res;
+            return  await authorization.GetUserAsync(login, password);
         }
     }
 }
