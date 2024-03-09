@@ -17,6 +17,7 @@ namespace WPFClient.vm
         public User Data { get; set; }
 
         Authorization auth = new Authorization();
+        CRUDUser crudser = new CRUDUser();
         public string Login { get; set; }
         public string Password { get; set; }        
 
@@ -39,10 +40,18 @@ namespace WPFClient.vm
 
         public async Task<User?> AddUser()
         {
-            var res = await auth.AddUser(Login, Password);
+            var res = await crudser.AddUser(Login, Password);
             return res;
         }
+
+        public async Task<User?> UpdateUser(User user)
+        {
+            return await crudser.UpdateUser(user);
+        }
+
+        public async Task<IEnumerable<DtoUser>?> GetAllUsers()
+        {
+            return await crudser.GetAllUsers();
+        }
     }
-
-
 }

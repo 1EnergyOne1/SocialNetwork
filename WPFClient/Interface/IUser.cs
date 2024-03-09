@@ -9,8 +9,10 @@ namespace WPFClient.Interface
 {
     public partial interface IUser
     {
-        public Task<User?> GetUser(string login, string password);
-
         public Task<User?> AddUser(string login, string password);
+
+        public Task<User?> UpdateUser(User user);
+
+        public Task<IEnumerable<DtoUser>?> GetAllUsers();
     }
 }
