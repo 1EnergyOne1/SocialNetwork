@@ -39,11 +39,31 @@ namespace WPFClient
             InitializeComponent();
             this.DataContext = user;
             User = user;
-            UserName = user.Name;
-            UserLastName = user.Lastname;
-            UserLogin = user.Login;
-            UserPassword = user.Password;
-            UserAge = user.Age;
+            if (!string.IsNullOrEmpty(user.Name))
+            {
+                name.Text = user.Name;
+                UserName = user.Name;
+            }
+            if (!string.IsNullOrEmpty(user.Lastname))
+            {
+                lastName.Text = user.Lastname;
+                UserLastName = user.Lastname;
+            }
+            if (!string.IsNullOrEmpty(user.Login))
+            {
+                login.Text = user.Login;
+                UserLogin = user.Login;
+            }
+            if (!string.IsNullOrEmpty(user.Password))
+            {
+                password.Text = user.Password;
+                UserPassword = user.Password;
+            }
+            if (!string.IsNullOrEmpty(user.Age.ToString()))
+            {
+                age.Text = user.Age.ToString();
+                UserAge = user.Age;
+            }                
             GetAllUsers();
         }
 
@@ -85,19 +105,37 @@ namespace WPFClient
 
         private void Name(object sender, TextChangedEventArgs e)
         {
-            User.Name = Convert.ToString(name.Text);
+            if(!string.IsNullOrEmpty(name.Text))
+                User.Name = Convert.ToString(name.Text);
+            else
+            {
+                if(!string.IsNullOrEmpty(User.Name))
+                    name.Text = User.Name;
+            }
         }
 
         private void LastName(object sender, TextChangedEventArgs e)
         {
-            User.Lastname = Convert.ToString(lastName.Text);
+            if (!string.IsNullOrEmpty(lastName.Text))
+                User.Lastname = Convert.ToString(lastName.Text);
+            else
+            {
+                if (!string.IsNullOrEmpty(User.Lastname))
+                    lastName.Text = User.Lastname;
+            }
         }
 
         private void Age(object sender, TextChangedEventArgs e)
         {
             try
             {
-                User.Age = Convert.ToInt32(age.Text);
+                if (!string.IsNullOrEmpty(age.Text))
+                    User.Age = Convert.ToInt32(age.Text);
+                else
+                {
+                    if (!string.IsNullOrEmpty(User.Age.ToString()))
+                        age.Text = User.Age.ToString();
+                }
             }
             catch(Exception ex)
             {
@@ -108,12 +146,24 @@ namespace WPFClient
 
         private void Login(object sender, TextChangedEventArgs e)
         {
-            User.Login = Convert.ToString(login.Text);
+            if (!string.IsNullOrEmpty(login.Text))
+                User.Login = Convert.ToString(login.Text);
+            else
+            {
+                if (!string.IsNullOrEmpty(User.Login))
+                    login.Text = User.Login;
+            }
         }
 
         private void Password(object sender, TextChangedEventArgs e)
         {
-            User.Password = Convert.ToString(password.Text);
+            if (!string.IsNullOrEmpty(password.Text))
+                User.Password = Convert.ToString(password.Text);
+            else
+            {
+                if (!string.IsNullOrEmpty(User.Password))
+                    password.Text = User.Password;
+            }
         }
 
         private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
