@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFClient.vm;
 
 namespace WPFClient
 {
@@ -20,7 +21,14 @@ namespace WPFClient
     /// </summary>
     public partial class UserPage : Window
     {
-        public User User { get; set; }
+        UserVM vm = new UserVM();
+        public User User { get; set; }        
+        List<User> Users = new List<User>();
+        public string UserName { get; set; }
+        public string UserLastName { get; set; }
+        public string UserLogin { get; set; }
+        public string UserPassword { get; set; }
+        public int? UserAge { get; set; }
         public UserPage()
         {
             InitializeComponent();
@@ -29,7 +37,28 @@ namespace WPFClient
         public UserPage(User user)
         {
             InitializeComponent();
+            this.DataContext = user;
             User = user;
+            UserName = user.Name;
+            UserLastName = user.Lastname;
+            UserLogin = user.Login;
+            UserPassword = user.Password;
+            UserAge = user.Age;
+            GetAllUsers();
+        }
+
+        private async void GetAllUsers()
+        {
+            var res = await vm.GetAllUsers();
+            if(res != null)
+            {
+                var DtoUsers = res.ToArray();
+                foreach(var DtoUser in DtoUsers)
+                {
+                    Users.Add((User)DtoUser);
+                }
+                usersGrid.ItemsSource = Users;
+            }            
         }
 
         private void UnAuthorize(object sender, RoutedEventArgs e)
@@ -43,6 +72,53 @@ namespace WPFClient
         {
             AddUser addUser = new AddUser();
             addUser.Show();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+            if (User != null)
+            {
+                var result = vm.UpdateUser(User);
+            }
+        }
+
+        private void Name(object sender, TextChangedEventArgs e)
+        {
+            User.Name = Convert.ToString(name.Text);
+        }
+
+        private void LastName(object sender, TextChangedEventArgs e)
+        {
+            User.Lastname = Convert.ToString(lastName.Text);
+        }
+
+        private void Age(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                User.Age = Convert.ToInt32(age.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Вводить только цифровые значения");
+            }
+            
+        }
+
+        private void Login(object sender, TextChangedEventArgs e)
+        {
+            User.Login = Convert.ToString(login.Text);
+        }
+
+        private void Password(object sender, TextChangedEventArgs e)
+        {
+            User.Password = Convert.ToString(password.Text);
+        }
+
+        private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }
