@@ -65,5 +65,20 @@ namespace WPFClient.Repository
                 return null;
             }
         }
+
+        public async Task<bool?> DeleteUser(User user)
+        {
+            try
+            {
+                var jsonContent = JsonContent.Create(user);
+                var response = await httpClient.DeleteAsync($"https://localhost:7164/api/users/DeleteUser?id={user.Id}").ConfigureAwait(false);
+                var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

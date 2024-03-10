@@ -29,5 +29,10 @@ namespace WPFClient.Service
             return await CRUDUSer.UpdateUser(user);
 
         }
+
+        public async Task<bool?> DeleteUser(User user)
+        {
+            return await CRUDUSer.DeleteUser(user);
+        }
     }
 }

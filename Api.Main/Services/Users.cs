@@ -25,5 +25,10 @@ namespace Api.Main.Services
         {
             return users.UpdateUser(user, ct);
         }
+
+        public Task<bool?> DeleteUser(int id, CancellationToken ct)
+        {
+            return users.DeleteUser(id, ct);
+        }
     }
 }
