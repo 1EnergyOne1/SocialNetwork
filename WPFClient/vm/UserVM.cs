@@ -25,17 +25,19 @@ namespace WPFClient.vm
         {
             var login = Login;
             var password = Password;
-            var res = await auth.GetUser(login, password);
-            if (res.Id != null)
+            try
             {
-                UserPage page = new UserPage(res);            
+                var res = await auth.GetUser(login, password);
+                UserPage page = new UserPage(res);
                 page.Show();
                 return true;
             }
-            else
+            catch (Exception ex)
             {
+                MessageBox.Show("Ошибка подкючения к серверу/ошибка выполения запроса");
                 return false;
             }
+            
         }
 
         public async Task<User?> AddUser()
@@ -52,6 +54,12 @@ namespace WPFClient.vm
         public async Task<IEnumerable<DtoUser>?> GetAllUsers()
         {
             return await crudser.GetAllUsers();
+        }
+
+        public async Task<bool?> DeleteUser(object user)
+        {
+            var res = (User)user;
+            return await crudser.DeleteUser(res);
         }
     }
 }

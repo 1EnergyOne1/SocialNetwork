@@ -14,5 +14,7 @@ namespace WPFClient.Interface
         public Task<User?> UpdateUser(User user);
 
         public Task<IEnumerable<DtoUser>?> GetAllUsers();
+
+        public Task<bool?> DeleteUser(User user);
     }
 }

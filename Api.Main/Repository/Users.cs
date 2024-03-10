@@ -64,5 +64,20 @@ namespace Api.Main.Repository
                 return null;
             }
         }
+
+        public async Task<bool?> DeleteUser(int id, CancellationToken ct)
+        {
+            try
+            {               
+                var res =  await db.Users.Where(x => x.Id == id).FirstOrDefaultAsync(ct);
+                db.Users.Remove(res);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

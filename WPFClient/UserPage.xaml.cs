@@ -29,6 +29,7 @@ namespace WPFClient
         public string UserLogin { get; set; }
         public string UserPassword { get; set; }
         public int? UserAge { get; set; }
+        public int TableRowIndex { get; set; }
         public UserPage()
         {
             InitializeComponent();
@@ -36,35 +37,42 @@ namespace WPFClient
 
         public UserPage(User user)
         {
-            InitializeComponent();
-            this.DataContext = user;
-            User = user;
-            if (!string.IsNullOrEmpty(user.Name))
+            try
             {
-                name.Text = user.Name;
-                UserName = user.Name;
+                InitializeComponent();
+                this.DataContext = user;
+                User = user;
+                if (!string.IsNullOrEmpty(user.Name))
+                {
+                    name.Text = user.Name;
+                    UserName = user.Name;
+                }
+                if (!string.IsNullOrEmpty(user.Lastname))
+                {
+                    lastName.Text = user.Lastname;
+                    UserLastName = user.Lastname;
+                }
+                if (!string.IsNullOrEmpty(user.Login))
+                {
+                    login.Text = user.Login;
+                    UserLogin = user.Login;
+                }
+                if (!string.IsNullOrEmpty(user.Password))
+                {
+                    password.Text = user.Password;
+                    UserPassword = user.Password;
+                }
+                if (!string.IsNullOrEmpty(user.Age.ToString()))
+                {
+                    age.Text = user.Age.ToString();
+                    UserAge = user.Age;
+                }
+                GetAllUsers();
             }
-            if (!string.IsNullOrEmpty(user.Lastname))
+            catch(Exception ex)
             {
-                lastName.Text = user.Lastname;
-                UserLastName = user.Lastname;
-            }
-            if (!string.IsNullOrEmpty(user.Login))
-            {
-                login.Text = user.Login;
-                UserLogin = user.Login;
-            }
-            if (!string.IsNullOrEmpty(user.Password))
-            {
-                password.Text = user.Password;
-                UserPassword = user.Password;
-            }
-            if (!string.IsNullOrEmpty(user.Age.ToString()))
-            {
-                age.Text = user.Age.ToString();
-                UserAge = user.Age;
-            }                
-            GetAllUsers();
+                MessageBox.Show("Ошибка подкючения к серверу/ошибка выполения запроса");
+            }            
         }
 
         private async void GetAllUsers()
@@ -168,6 +176,24 @@ namespace WPFClient
 
         private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+           TableRowIndex = usersGrid.SelectedIndex;
+        }
+
+        private void DeleteUser(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var res = vm.DeleteUser(usersGrid.SelectedItem);
+
+                if (res != null)
+                {
+                    Users.RemoveAt(usersGrid.SelectedIndex);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Пользователь успешно удален");
+            }
             
         }
     }

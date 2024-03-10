@@ -39,5 +39,12 @@ namespace Api.Main.Controllers
         {
             return await users.UpdateUser(user, ct);
         }
+
+        [Route("DeleteUser")]
+        [HttpDelete]
+        public async Task<ActionResult<bool?>> DeleteUser([FromQuery] int id, CancellationToken ct)
+        {
+            return await users.DeleteUser(id, ct);
+        }
     }
 }
