@@ -65,7 +65,10 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Сообщения">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="mailsGrid" AutoGenerateColumns="True" ItemsSource="{DynamicResource ResourceKey=mails}" Margin="0,10,0,267" SelectionChanged="MailsSelectionChanged">
+                    </DataGrid>
+                </Grid>
             </TabItem>
             <TabItem Header="Пользователи">
                 <Grid Background="#FFE5E5E5">

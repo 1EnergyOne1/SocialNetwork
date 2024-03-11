@@ -18,5 +18,20 @@ namespace Api.Data.Models
         public string? Message { get; set; }
 
         public virtual User User { get; set; } = null!;
+
+        public static explicit operator Mail(DtoMail? v)
+        {
+            if (v is null) return null;
+            else
+            {
+                return new Mail
+                {
+                    Id = v.id,
+                    UserId = v.userId,
+                    DateSend = v.dateSend,
+                    Message = v.message
+                };
+            }
+        }
     }
 }

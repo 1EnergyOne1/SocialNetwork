@@ -22,8 +22,11 @@ namespace WPFClient
     public partial class UserPage : Window
     {
         UserVM vm = new UserVM();
+        MailsVM mailsVM = new MailsVM();
         public User User { get; set; }        
         List<User> Users = new List<User>();
+        public Mail Mail { get; set; }
+        List<Mail> Mails = new List<Mail>();
         public string UserName { get; set; }
         public string UserLastName { get; set; }
         public string UserLogin { get; set; }
@@ -68,6 +71,7 @@ namespace WPFClient
                     UserAge = user.Age;
                 }
                 GetAllUsers();
+                GetAllMailsForUser(123);
             }
             catch(Exception ex)
             {
@@ -87,6 +91,20 @@ namespace WPFClient
                 }
                 usersGrid.ItemsSource = Users;
             }            
+        }
+
+        private async void GetAllMailsForUser()
+        {
+            var res = await mailsVM.GetAllMailsForUser(123);
+            if (res != null)
+            {
+                var DtoMails = res.ToArray();
+                foreach (var DtoMail in DtoMails)
+                {
+                    Mails.Add((Mail)DtoMail);
+                }
+                mailsGrid.ItemsSource = Mails;
+            }
         }
 
         private void UnAuthorize(object sender, RoutedEventArgs e)
@@ -195,6 +213,11 @@ namespace WPFClient
                 MessageBox.Show("Пользователь успешно удален");
             }
             
+        }
+
+        private void MailsSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
