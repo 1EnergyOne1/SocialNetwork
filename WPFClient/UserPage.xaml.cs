@@ -1,4 +1,5 @@
 ﻿using Api.Data.Models;
+using NodaTime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +23,19 @@ namespace WPFClient
     public partial class UserPage : Window
     {
         UserVM vm = new UserVM();
+        MailsVM mailsVM = new MailsVM();
         public User User { get; set; }        
         List<User> Users = new List<User>();
+        public Mail Mail { get; set; }
+        List<Mail> Mails = new List<Mail>();
         public string UserName { get; set; }
         public string UserLastName { get; set; }
         public string UserLogin { get; set; }
         public string UserPassword { get; set; }
         public int? UserAge { get; set; }
-        public int TableRowIndex { get; set; }
+        public int UserTableRowIndex { get; set; }
+        public int MailTableRowIndex { get; set; }
+        public int UserId { get; set; }
         public UserPage()
         {
             InitializeComponent();
@@ -68,6 +74,7 @@ namespace WPFClient
                     UserAge = user.Age;
                 }
                 GetAllUsers();
+                GetAllMailsForUser(User.Id);
             }
             catch(Exception ex)
             {
@@ -87,6 +94,20 @@ namespace WPFClient
                 }
                 usersGrid.ItemsSource = Users;
             }            
+        }
+
+        private async void GetAllMailsForUser(int userId)
+        {
+            var res = await mailsVM.GetAllMailsForUser(userId);
+            if (res != null)
+            {
+                var DtoMails = res.ToArray();
+                foreach (var DtoMail in DtoMails)
+                {
+                    Mails.Add((Mail)DtoMail);
+                }
+                mailsGrid.ItemsSource = Mails;
+            }
         }
 
         private void UnAuthorize(object sender, RoutedEventArgs e)
@@ -176,7 +197,7 @@ namespace WPFClient
 
         private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           TableRowIndex = usersGrid.SelectedIndex;
+           UserTableRowIndex = usersGrid.SelectedIndex;
         }
 
         private void DeleteUser(object sender, RoutedEventArgs e)
@@ -195,6 +216,28 @@ namespace WPFClient
                 MessageBox.Show("Пользователь успешно удален");
             }
             
+        }
+
+        private void MailsSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MailTableRowIndex = mailsGrid.SelectedIndex;
+        }
+
+        private void AddMessage(object sender, RoutedEventArgs e)
+        {
+            AddMail addMail = new AddMail(UserId);
+            addMail.Show();
+        }
+
+        private void UpdateMessage(object sender, RoutedEventArgs e)
+        {
+            AddMail addMail = new AddMail(UserId);
+            addMail.Show();
+        }
+
+        private void GetAll(object sender, RoutedEventArgs e)
+        {
+            GetAllMailsForUser(UserId);
         }
     }
 }
