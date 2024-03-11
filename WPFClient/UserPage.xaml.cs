@@ -239,5 +239,10 @@ namespace WPFClient
         {
             GetAllMailsForUser(UserId);
         }
+
+        private void DeleteMessage(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
