@@ -45,6 +45,21 @@ namespace WPFClient.Repository
             }
         }
 
+        public async Task<DtoMail?> GetMail(int mailId)
+        {
+            try
+            {
+                var response = await httpClient.GetAsync($"https://localhost:7164/api/mails/GetMail?mailId={mailId}").ConfigureAwait(false);
+                var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var mail = JsonSerializer.Deserialize<DtoMail?>(res);
+                return mail;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public async Task<Mail?> AddMail(Mail mail)
         {
             try
@@ -90,6 +105,6 @@ namespace WPFClient.Repository
             {
                 return null;
             }
-        }
+        }        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Api.Data.Models;
+using NodaTime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,9 @@ namespace WPFClient
         public string UserLogin { get; set; }
         public string UserPassword { get; set; }
         public int? UserAge { get; set; }
-        public int TableRowIndex { get; set; }
+        public int UserTableRowIndex { get; set; }
+        public int MailTableRowIndex { get; set; }
+        public int UserId { get; set; }
         public UserPage()
         {
             InitializeComponent();
@@ -71,7 +74,7 @@ namespace WPFClient
                     UserAge = user.Age;
                 }
                 GetAllUsers();
-                GetAllMailsForUser(123);
+                GetAllMailsForUser(User.Id);
             }
             catch(Exception ex)
             {
@@ -93,9 +96,9 @@ namespace WPFClient
             }            
         }
 
-        private async void GetAllMailsForUser()
+        private async void GetAllMailsForUser(int userId)
         {
-            var res = await mailsVM.GetAllMailsForUser(123);
+            var res = await mailsVM.GetAllMailsForUser(userId);
             if (res != null)
             {
                 var DtoMails = res.ToArray();
@@ -194,7 +197,7 @@ namespace WPFClient
 
         private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           TableRowIndex = usersGrid.SelectedIndex;
+           UserTableRowIndex = usersGrid.SelectedIndex;
         }
 
         private void DeleteUser(object sender, RoutedEventArgs e)
@@ -217,7 +220,24 @@ namespace WPFClient
 
         private void MailsSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            MailTableRowIndex = mailsGrid.SelectedIndex;
+        }
 
+        private void AddMessage(object sender, RoutedEventArgs e)
+        {
+            AddMail addMail = new AddMail(UserId);
+            addMail.Show();
+        }
+
+        private void UpdateMessage(object sender, RoutedEventArgs e)
+        {
+            AddMail addMail = new AddMail(UserId);
+            addMail.Show();
+        }
+
+        private void GetAll(object sender, RoutedEventArgs e)
+        {
+            GetAllMailsForUser(UserId);
         }
     }
 }

@@ -33,6 +33,11 @@ namespace WPFClient.vm
             return await CRUDMailsService.GetAllMailsForUser(userId);
         }
 
+        public async Task<DtoMail?> GetMail(int mailId)
+        {
+            return await CRUDMailsService.GetMail(mailId);
+        }
+
         public async Task<bool?> DeleteMail(object mail)
         {
             var res = (Mail)mail;

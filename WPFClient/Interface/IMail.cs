@@ -16,5 +16,6 @@ namespace WPFClient.Interface
         public Task<IEnumerable<DtoMail>?> GetAllMails();
         public Task<IEnumerable<DtoMail>?> GetAllMailsForUser(int userId);
         public Task<bool?> DeleteMail(Mail mail);
+        public Task<DtoMail?> GetMail(int mailId);
     }
 }

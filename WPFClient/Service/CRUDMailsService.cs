@@ -26,7 +26,6 @@ namespace WPFClient.Service
         public async Task<Mail?> UpdateMail(Mail mail)
         {
             return await CRUDMail.UpdateMail(mail);
-
         }
 
         public async Task<bool?> DeleteMail(Mail mail)
@@ -37,6 +36,11 @@ namespace WPFClient.Service
         public async Task<IEnumerable<DtoMail>?> GetAllMailsForUser(int userId)
         {
             return await CRUDMail.GetAllMailsForUser(userId);
+        }
+
+        public async Task<DtoMail?> GetMail(int mailId)
+        {
+            return await CRUDMail.GetMail(mailId);
         }
     }
 }
