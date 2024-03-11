@@ -19,7 +19,7 @@ namespace WPFClient.Repository
         {
             try
             {
-                var response = await httpClient.GetAsync($"https://localhost:7164/api/mails/GetAllMails").ConfigureAwait(false);
+                var response = await httpClient.GetAsync($"https://localhost:7164/api/mail/GetAllMails").ConfigureAwait(false);
                 var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var mails = JsonSerializer.Deserialize<IEnumerable<DtoMail>>(res);
                 return mails;
@@ -34,7 +34,7 @@ namespace WPFClient.Repository
         {
             try
             {
-                var response = await httpClient.GetAsync($"https://localhost:7164/api/mails/GetAllMailsForUser?userId={userId}").ConfigureAwait(false);
+                var response = await httpClient.GetAsync($"https://localhost:7164/api/mail/GetAllMailsForUser?userId={userId}").ConfigureAwait(false);
                 var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var mails = JsonSerializer.Deserialize<IEnumerable<DtoMail>>(res);
                 return mails;
@@ -49,7 +49,7 @@ namespace WPFClient.Repository
         {
             try
             {
-                var response = await httpClient.GetAsync($"https://localhost:7164/api/mails/GetMail?mailId={mailId}").ConfigureAwait(false);
+                var response = await httpClient.GetAsync($"https://localhost:7164/api/mail/GetMail?mailId={mailId}").ConfigureAwait(false);
                 var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var mail = JsonSerializer.Deserialize<DtoMail?>(res);
                 return mail;
@@ -65,7 +65,7 @@ namespace WPFClient.Repository
             try
             {                
                 var jsonContent = JsonContent.Create(mail);
-                var response = await httpClient.PostAsync($"https://localhost:7164/api/mails/AddMail", jsonContent).ConfigureAwait(false);
+                var response = await httpClient.PostAsync($"https://localhost:7164/api/mail/AddMail", jsonContent).ConfigureAwait(false);
                 var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var newMail = JsonSerializer.Deserialize<DtoMail>(res);
                 return (Mail)mail;
@@ -81,7 +81,7 @@ namespace WPFClient.Repository
             try
             {
                 var jsonContent = JsonContent.Create(mail);
-                var response = await httpClient.PutAsync($"https://localhost:7164/api/mails/UpdateMail", jsonContent).ConfigureAwait(false);
+                var response = await httpClient.PutAsync($"https://localhost:7164/api/mail/UpdateMail", jsonContent).ConfigureAwait(false);
                 var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var forDtoMail = JsonSerializer.Deserialize<DtoMail>(res);
                 return (Mail)forDtoMail;
@@ -97,7 +97,7 @@ namespace WPFClient.Repository
             try
             {
                 var jsonContent = JsonContent.Create(mail);
-                var response = await httpClient.DeleteAsync($"https://localhost:7164/api/mails/DeleteMail?id={mail.Id}").ConfigureAwait(false);
+                var response = await httpClient.DeleteAsync($"https://localhost:7164/api/mail/DeleteMail?id={mail.Id}").ConfigureAwait(false);
                 var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return true;
             }
