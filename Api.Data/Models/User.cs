@@ -22,6 +22,8 @@ public partial class User
 
     public bool Isadmin { get; set; }
 
+    public virtual ICollection<Mail> Mail { get; set; } = new List<Mail>();
+
     public static explicit operator User(DtoUser? v)
     {
         if(v is null) return null;
