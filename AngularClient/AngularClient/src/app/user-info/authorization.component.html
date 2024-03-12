@@ -1,0 +1,7 @@
+<div class="authorization-view">
+    <input [(ngModel)]="login" placeholder="Логин" />
+    <input [(ngModel)]="password" placeholder="Пароль" />
+    <button title="Отправить запрос Get" (click)="getUser()">Авторизация</button>
+</div>
+<hr/>
+<main-user-view *ngIf="Islogged"></main-user-view>

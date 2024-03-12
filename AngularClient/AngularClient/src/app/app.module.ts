@@ -4,7 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UserInfoModule } from './user-info/user-info.module';
+import { AuthorizationModule } from './user-info/authorization.module';
+import { ExportToExcelModule } from './export-to-excel/export-to-excel.module';
+import { MainUserViewModule } from './main-user-view/main-user-view.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { UserInfoModule } from './user-info/user-info.module';
     BrowserModule,
     CommonModule,
     FormsModule,
-    UserInfoModule
+    AuthorizationModule,
+    ExportToExcelModule,
+    MainUserViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
