@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthorizationModule } from './user-info/authorization.module';
 import { ExportToExcelModule } from './export-to-excel/export-to-excel.module';
 import { MainUserViewModule } from './main-user-view/main-user-view.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MessagesModule } from './messages/messages.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MainUserViewModule } from './main-user-view/main-user-view.module';
     FormsModule,
     AuthorizationModule,
     ExportToExcelModule,
-    MainUserViewModule
+    MainUserViewModule,
+    NoopAnimationsModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

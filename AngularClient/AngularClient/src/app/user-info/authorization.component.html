@@ -1,7 +1,24 @@
 <div class="authorization-view">
-    <input [(ngModel)]="login" placeholder="Логин" />
-    <input [(ngModel)]="password" placeholder="Пароль" />
-    <button title="Отправить запрос Get" (click)="getUser()">Авторизация</button>
+    <mat-form-field class="example-full-width">
+        <mat-label>Логин</mat-label>
+        <input matInput [(ngModel)]="login" placeholder="Логин">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Пароль</mat-label>
+        <input matInput [(ngModel)]="password" placeholder="Пароль" />
+    </mat-form-field>
+    <div class="example-button-row">
+        <button mat-raised-button color="accent" title="Отправить запрос Get" (click)="getUser()">Авторизация</button>
+    </div>
 </div>
-<hr/>
-<main-user-view *ngIf="Islogged" [user]="user"></main-user-view>
+<hr />
+<mat-tab-group class="mat-tab-view" *ngIf="Islogged">
+    <mat-tab label="Информация о пользователе" class="mat-tab-content">
+        <main-user-view [user]="user"></main-user-view>
+    </mat-tab>
+    <mat-tab label="Second" class="mat-tab-content">
+        <messages [user]="user"></messages>
+    </mat-tab>
+    <mat-tab *ngIf="user.isAdmin == true"  label="Third" class="mat-tab-content"> Content 3 </mat-tab>
+    <!-- <main-user-view *ngIf="Islogged" [user]="user"></main-user-view> -->
+</mat-tab-group>

@@ -6,12 +6,11 @@ import { User } from "src/models/user";
 export class UserServices {
     constructor(private _http: HttpClient) { }
     getAllUsers() {
-        return this._http.get(`https://localhost:7164/api/users/GetAllUsers`);
+        return this._http.get(`https://localhost:7164/api/users/GetAllUsers`).toPromise();
     }
 
-    getUser(login: string, password: string) {
-        let s = this._http.get(`https://localhost:7164/api/users/GetUser?login=${login}&password=${password}`);
-        return s;
+    async getUser(login: string, password: string) {
+        return await this._http.get(`https://localhost:7164/api/users/GetUser?login=${login}&password=${password}`).toPromise();
     }
 
     updateUser(user: User) {
@@ -21,10 +20,10 @@ export class UserServices {
 
     addUser(user: User) {
         const serializedUser = JSON.stringify(user);
-        return this._http.post(`https://localhost:7164/api/users/AddUser`, serializedUser);
+        return this._http.post(`https://localhost:7164/api/users/AddUser`, serializedUser).toPromise();
     }
 
     deleteUser(userId: number) {
-        return this._http.get(`https://localhost:7164/api/users/DeleteUser?id=${userId}`);
+        return this._http.get(`https://localhost:7164/api/users/DeleteUser?id=${userId}`).toPromise();
     }
 }

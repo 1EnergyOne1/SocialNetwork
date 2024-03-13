@@ -3,21 +3,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserServices } from 'src/Services/UserService';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MainUserViewComponent } from './main-user-view.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MessagesComponent } from './messages.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
-  declarations: [MainUserViewComponent
+  declarations: [MessagesComponent
   ],
   imports: [
     HttpClientModule,
     FormsModule,
     CommonModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
-  exports: [MainUserViewComponent],
+  exports: [MessagesComponent],
   providers: [UserServices]
 })
-export class MainUserViewModule { }
+export class MessagesModule { }

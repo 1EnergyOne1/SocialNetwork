@@ -17,19 +17,15 @@ export class AuthorizationComponent {
   constructor(private _UserServices: UserServices) { }
 
   async getUser() {
-    this._UserServices.getUser(this.login, this.password).subscribe({
-      next: (data: any) => {
-        this.user = data;
+    this._UserServices.getUser(this.login, this.password).then(
+      result => {
+        var s = result;
+        /* this.user = (User)s; */
         this.Islogged = true;
-      }
-    })
-  }
+      },
+      error => {
 
-  /* async getUsers() {
-    this._UserServices.getAllUsers().subscribe({
-      next: (data: any) => {
-        this.users = data.result;
       }
-    })
-  } */
+    );
+  }
 }
