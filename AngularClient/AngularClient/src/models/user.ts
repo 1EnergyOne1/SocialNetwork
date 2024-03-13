@@ -5,6 +5,6 @@ export class User {
     login?: string;
     password? : string;
     age?: number;
-    dateCreate?: Date;
-    isAdmin?: boolean;
+    datecreate?: Date;
+    isadmin?: boolean;
 }

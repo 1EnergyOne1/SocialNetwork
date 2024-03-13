@@ -17,10 +17,10 @@ export class MainUserViewComponent {
   async updateUser() {
     this._UserServices.updateUser(this.user).then(
       result => {
-        let s = result;
+        this.user = result as User;
       },
       error => {
-        let r = error;
+
       }
     );
   }

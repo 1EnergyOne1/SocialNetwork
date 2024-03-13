@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MessagesModule } from '../messages/messages.module';
+import { AllUsersModule } from '../all-users/all-users.module';
 
 @NgModule({
   declarations: [AuthorizationComponent
@@ -21,7 +22,8 @@ import { MessagesModule } from '../messages/messages.module';
     MatButtonModule,
     MatInputModule,
     MatTabsModule,
-    MessagesModule
+    MessagesModule,
+    AllUsersModule
   ],
   exports: [AuthorizationComponent],
   providers: [UserServices]

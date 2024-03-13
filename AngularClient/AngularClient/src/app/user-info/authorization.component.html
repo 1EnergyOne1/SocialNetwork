@@ -16,9 +16,10 @@
     <mat-tab label="Информация о пользователе" class="mat-tab-content">
         <main-user-view [user]="user"></main-user-view>
     </mat-tab>
-    <mat-tab label="Second" class="mat-tab-content">
+    <mat-tab label="Сообщения" class="mat-tab-content">
         <messages [user]="user"></messages>
     </mat-tab>
-    <mat-tab *ngIf="user.isAdmin == true"  label="Third" class="mat-tab-content"> Content 3 </mat-tab>
-    <!-- <main-user-view *ngIf="Islogged" [user]="user"></main-user-view> -->
+    <mat-tab *ngIf="user?.isadmin == true" label="Таблица пользователей" class="mat-tab-content">
+        <all-users></all-users>
+    </mat-tab>
 </mat-tab-group>

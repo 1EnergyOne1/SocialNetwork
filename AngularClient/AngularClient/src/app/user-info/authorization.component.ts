@@ -19,8 +19,8 @@ export class AuthorizationComponent {
   async getUser() {
     this._UserServices.getUser(this.login, this.password).then(
       result => {
-        var s = result;
-        /* this.user = (User)s; */
+        this.user = result as User;
+        let s = this.user;
         this.Islogged = true;
       },
       error => {

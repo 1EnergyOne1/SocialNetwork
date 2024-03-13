@@ -9,18 +9,16 @@ export class UserServices {
         return this._http.get(`https://localhost:7164/api/users/GetAllUsers`).toPromise();
     }
 
-    async getUser(login: string, password: string) {
-        return await this._http.get(`https://localhost:7164/api/users/GetUser?login=${login}&password=${password}`).toPromise();
+    getUser(login: string, password: string) {
+        return this._http.get(`https://localhost:7164/api/users/GetUser?login=${login}&password=${password}`).toPromise();
     }
 
     updateUser(user: User) {
-        const serializedUser = JSON.stringify(user);
         return this._http.put(`https://localhost:7164/api/users/UpdateUser`, user).toPromise()
     }
 
     addUser(user: User) {
-        const serializedUser = JSON.stringify(user);
-        return this._http.post(`https://localhost:7164/api/users/AddUser`, serializedUser).toPromise();
+        return this._http.post(`https://localhost:7164/api/users/AddUser`, user).toPromise();
     }
 
     deleteUser(userId: number) {

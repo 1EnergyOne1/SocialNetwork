@@ -9,6 +9,7 @@ import { ExportToExcelModule } from './export-to-excel/export-to-excel.module';
 import { MainUserViewModule } from './main-user-view/main-user-view.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from './messages/messages.module';
+import { AllUsersModule } from './all-users/all-users.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MessagesModule } from './messages/messages.module';
     ExportToExcelModule,
     MainUserViewModule,
     NoopAnimationsModule,
-    MessagesModule
+    MessagesModule,
+    AllUsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]

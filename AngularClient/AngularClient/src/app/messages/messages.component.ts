@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core";
-import { UserServices } from "src/Services/UserService";
+import { MailServices } from "src/Services/MailService";
+import { Mail } from "src/models/Mail";
 import { User } from "src/models/user";
 
 @Component({
@@ -8,21 +9,33 @@ import { User } from "src/models/user";
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent {
+  displayedColumns: string[] = ['От кого', 'Дата сообщения', 'Сообщение'];
 
   @Input()
   user: User = new User();
-  users: User[] = [];
+  mails: Mail[] = [];
 
-  constructor(private _UserServices: UserServices) { }
+  constructor(private _mailService: MailServices) { }
+  ngOnInit(): void {
+    this.getMessagesFromUser();
+  }
 
-  async updateUser() {
-    this._UserServices.getAllUsers().then(
+  async getMessagesFromUser() {
+    this._mailService.getAllMailsForUser(this.user.id).then(
       result => {
-        let s = result;
+        this.mails = result as Mail[];
       },
       error => {
-        let r = error;
+
       }
     );
+  }
+
+  async addMail() {
+
+  }
+
+  async deleteMail() {
+
   }
 }
