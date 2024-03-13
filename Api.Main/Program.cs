@@ -26,7 +26,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-app.UseCors(builder => builder.AllowAnyOrigin());
+app.UseCors(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
 
 app.MapControllers();
 

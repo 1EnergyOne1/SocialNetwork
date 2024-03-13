@@ -16,7 +16,7 @@ export class UserServices {
 
     updateUser(user: User) {
         const serializedUser = JSON.stringify(user);
-        return this._http.put(`https://localhost:7164/api/users/UpdateUser`, serializedUser).toPromise()
+        return this._http.put(`https://localhost:7164/api/users/UpdateUser`, user).toPromise()
     }
 
     addUser(user: User) {
