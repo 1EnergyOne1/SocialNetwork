@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MessagesComponent } from './messages.component';
 import {MatTableModule} from '@angular/material/table';
+import { MailServices } from 'src/Services/MailService';
 
 @NgModule({
   declarations: [MessagesComponent
@@ -20,6 +21,6 @@ import {MatTableModule} from '@angular/material/table';
     MatTableModule
   ],
   exports: [MessagesComponent],
-  providers: [UserServices]
+  providers: [MailServices]
 })
 export class MessagesModule { }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { UserServices } from "src/Services/UserService";
+import { Mail } from "src/models/Mail";
 import { User } from "src/models/user";
 
 @Component({
@@ -9,7 +10,7 @@ import { User } from "src/models/user";
 })
 export class AllUsersComponent implements OnInit {
     displayedColumns: string[] = ['Имя', 'Фамилия', 'Возраст', 'Логин', 'Пароль'];
-
+    clickedRows = new Set<Mail>();
     @Input()
     user: User = new User();
     users: User[] = [];
@@ -31,11 +32,11 @@ export class AllUsersComponent implements OnInit {
         );
     }
 
-    async addUser(){
-
+    async addUser() {
+        
     }
 
-    async deleteUser(){
+    async deleteUser() {
 
     }
 }
