@@ -9,8 +9,8 @@ import { User } from "src/models/user";
 })
 export class AuthorizationComponent {
 
-  public login: string = "";
-  public password: string = "";
+  public login: string = "energyone";
+  public password: string = "4876";
   user: User = new User();
   Islogged: boolean = false;
 

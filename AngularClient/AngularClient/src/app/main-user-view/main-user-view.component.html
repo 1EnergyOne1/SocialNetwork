@@ -1,1 +1,8 @@
-<h1>Клиент загружен</h1>
+<div class="user-info-view">
+    <input [(ngModel)]="user.name" placeholder="Имя" />
+    <input [(ngModel)]="user.lastname" placeholder="Фамилия" />
+    <input [(ngModel)]="user.age" placeholder="Возраст" />
+    <input [(ngModel)]="user.login" placeholder="Логин" />
+    <input [(ngModel)]="user.password" placeholder="Пароль" />
+    <button title="Отправить запрос Get" (click)="updateUser()">Сохранить данные</button>
+</div>

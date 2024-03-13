@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { UserServices } from "src/Services/UserService";
 import { User } from "src/models/user";
 
@@ -9,21 +9,19 @@ import { User } from "src/models/user";
 })
 export class MainUserViewComponent {
 
-  login: string = "";
-  password: string = "";
+  @Input()
   user: User = new User();
 
   constructor(private _UserServices: UserServices) { }
 
-  async getUser(){
-
-  }
-
-  /* async getUsers() {
-    this._UserServices.getAllUsers().subscribe({
-      next: (data: any) => {
-        this.users = data.result;
+  async updateUser() {
+    this._UserServices.updateUser(this.user).then(
+      result => {
+        let s = result;
+      },
+      error => {
+        let r = error;
       }
-    })
-  } */
+    );
+  }
 }

@@ -4,4 +4,4 @@
     <button title="Отправить запрос Get" (click)="getUser()">Авторизация</button>
 </div>
 <hr/>
-<main-user-view *ngIf="Islogged"></main-user-view>
+<main-user-view *ngIf="Islogged" [user]="user"></main-user-view>
