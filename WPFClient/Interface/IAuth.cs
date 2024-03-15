@@ -9,6 +9,6 @@ namespace WPFClient.Interface
 {
     public partial interface IAuth
     {
-        public Task<User?> GetUser(string login, string password);
+        //public Task<User?> GetUser(string login, string password);
     }
 }

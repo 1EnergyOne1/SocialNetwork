@@ -24,10 +24,10 @@ namespace WPFClient
     {
         UserVM vm = new UserVM();
         MailsVM mailsVM = new MailsVM();
-        public User User { get; set; }        
-        List<User> Users = new List<User>();
-        public Mail Mail { get; set; }
-        List<Mail> Mails = new List<Mail>();
+        //public User User { get; set; }        
+        //List<User> Users = new List<User>();
+        //public Mail Mail { get; set; }
+        //List<Mail> Mails = new List<Mail>();
         public string UserName { get; set; }
         public string UserLastName { get; set; }
         public string UserLogin { get; set; }
@@ -41,73 +41,73 @@ namespace WPFClient
             InitializeComponent();
         }
 
-        public UserPage(User user)
-        {
-            try
-            {
-                InitializeComponent();
-                this.DataContext = user;
-                User = user;
-                if (!string.IsNullOrEmpty(user.Name))
-                {
-                    name.Text = user.Name;
-                    UserName = user.Name;
-                }
-                if (!string.IsNullOrEmpty(user.Lastname))
-                {
-                    lastName.Text = user.Lastname;
-                    UserLastName = user.Lastname;
-                }
-                if (!string.IsNullOrEmpty(user.Login))
-                {
-                    login.Text = user.Login;
-                    UserLogin = user.Login;
-                }
-                if (!string.IsNullOrEmpty(user.Password))
-                {
-                    password.Text = user.Password;
-                    UserPassword = user.Password;
-                }
-                if (!string.IsNullOrEmpty(user.Age.ToString()))
-                {
-                    age.Text = user.Age.ToString();
-                    UserAge = user.Age;
-                }
-                GetAllUsers();
-                GetAllMailsForUser(User.Id);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Ошибка подкючения к серверу/ошибка выполения запроса");
-            }            
-        }
+        //public UserPage(User user)
+        //{
+        //    try
+        //    {
+        //        InitializeComponent();
+        //        this.DataContext = user;
+        //        User = user;
+        //        if (!string.IsNullOrEmpty(user.Name))
+        //        {
+        //            name.Text = user.Name;
+        //            UserName = user.Name;
+        //        }
+        //        if (!string.IsNullOrEmpty(user.Lastname))
+        //        {
+        //            lastName.Text = user.Lastname;
+        //            UserLastName = user.Lastname;
+        //        }
+        //        if (!string.IsNullOrEmpty(user.Login))
+        //        {
+        //            login.Text = user.Login;
+        //            UserLogin = user.Login;
+        //        }
+        //        if (!string.IsNullOrEmpty(user.Password))
+        //        {
+        //            password.Text = user.Password;
+        //            UserPassword = user.Password;
+        //        }
+        //        if (!string.IsNullOrEmpty(user.Age.ToString()))
+        //        {
+        //            age.Text = user.Age.ToString();
+        //            UserAge = user.Age;
+        //        }
+        //        GetAllUsers();
+        //        GetAllMailsForUser(User.Id);
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        MessageBox.Show("Ошибка подкючения к серверу/ошибка выполения запроса");
+        //    }            
+        //}
 
         private async void GetAllUsers()
         {
-            var res = await vm.GetAllUsers();
-            if(res != null)
-            {
-                var DtoUsers = res.ToArray();
-                foreach(var DtoUser in DtoUsers)
-                {
-                    Users.Add((User)DtoUser);
-                }
-                usersGrid.ItemsSource = Users;
-            }            
+            //var res = await vm.GetAllUsers();
+            //if(res != null)
+            //{
+            //    //var DtoUsers = res.ToArray();
+            //    //foreach(var DtoUser in DtoUsers)
+            //    //{
+            //    //    Users.Add((User)DtoUser);
+            //    //}
+            //    //usersGrid.ItemsSource = Users;
+            //}            
         }
 
         private async void GetAllMailsForUser(int userId)
         {
-            var res = await mailsVM.GetAllMailsForUser(userId);
-            if (res != null)
-            {
-                var DtoMails = res.ToArray();
-                foreach (var DtoMail in DtoMails)
-                {
-                    Mails.Add((Mail)DtoMail);
-                }
-                mailsGrid.ItemsSource = Mails;
-            }
+            //var res = await mailsVM.GetAllMailsForUser(userId);
+            //if (res != null)
+            //{
+            //    var DtoMails = res.ToArray();
+            //    //foreach (var DtoMail in DtoMails)
+            //    //{
+            //    //    Mails.Add((Mail)DtoMail);
+            //    //}
+            //    //mailsGrid.ItemsSource = Mails;
+            //}
         }
 
         private void UnAuthorize(object sender, RoutedEventArgs e)
@@ -126,123 +126,123 @@ namespace WPFClient
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             
-            if (User != null)
-            {
-                var result = vm.UpdateUser(User);
-            }
+            //if (User != null)
+            //{
+            //    var result = vm.UpdateUser(User);
+            //}
         }
 
-        private void Name(object sender, TextChangedEventArgs e)
-        {
-            if(!string.IsNullOrEmpty(name.Text))
-                User.Name = Convert.ToString(name.Text);
-            else
-            {
-                if(!string.IsNullOrEmpty(User.Name))
-                    name.Text = User.Name;
-            }
-        }
+        //private void Name(object sender, TextChangedEventArgs e)
+        ////{
+        ////    if(!string.IsNullOrEmpty(name.Text))
+        ////        User.Name = Convert.ToString(name.Text);
+        ////    else
+        ////    {
+        ////        if(!string.IsNullOrEmpty(User.Name))
+        ////            name.Text = User.Name;
+        ////    }
+        //}
 
-        private void LastName(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(lastName.Text))
-                User.Lastname = Convert.ToString(lastName.Text);
-            else
-            {
-                if (!string.IsNullOrEmpty(User.Lastname))
-                    lastName.Text = User.Lastname;
-            }
-        }
+        //private void LastName(object sender, TextChangedEventArgs e)
+        //{
+        //    //if (!string.IsNullOrEmpty(lastName.Text))
+        //    //    User.Lastname = Convert.ToString(lastName.Text);
+        //    //else
+        //    //{
+        //    //    if (!string.IsNullOrEmpty(User.Lastname))
+        //    //        lastName.Text = User.Lastname;
+        //    //}
+        //}
 
-        private void Age(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(age.Text))
-                    User.Age = Convert.ToInt32(age.Text);
-                else
-                {
-                    if (!string.IsNullOrEmpty(User.Age.ToString()))
-                        age.Text = User.Age.ToString();
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Вводить только цифровые значения");
-            }
+        //private void Age(object sender, TextChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (!string.IsNullOrEmpty(age.Text))
+        //            User.Age = Convert.ToInt32(age.Text);
+        //        else
+        //        {
+        //            if (!string.IsNullOrEmpty(User.Age.ToString()))
+        //                age.Text = User.Age.ToString();
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        MessageBox.Show("Вводить только цифровые значения");
+        //    }
             
-        }
+        //}
 
-        private void Login(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(login.Text))
-                User.Login = Convert.ToString(login.Text);
-            else
-            {
-                if (!string.IsNullOrEmpty(User.Login))
-                    login.Text = User.Login;
-            }
-        }
+        //private void Login(object sender, TextChangedEventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(login.Text))
+        //        User.Login = Convert.ToString(login.Text);
+        //    else
+        //    {
+        //        if (!string.IsNullOrEmpty(User.Login))
+        //            login.Text = User.Login;
+        //    }
+        //}
 
-        private void Password(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(password.Text))
-                User.Password = Convert.ToString(password.Text);
-            else
-            {
-                if (!string.IsNullOrEmpty(User.Password))
-                    password.Text = User.Password;
-            }
-        }
+        //private void Password(object sender, TextChangedEventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(password.Text))
+        //        User.Password = Convert.ToString(password.Text);
+        //    else
+        //    {
+        //        if (!string.IsNullOrEmpty(User.Password))
+        //            password.Text = User.Password;
+        //    }
+        //}
 
-        private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-           UserTableRowIndex = usersGrid.SelectedIndex;
-        }
+        //private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //   UserTableRowIndex = usersGrid.SelectedIndex;
+        //}
 
-        private void DeleteUser(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var res = vm.DeleteUser(usersGrid.SelectedItem);
+        //private void DeleteUser(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        var res = vm.DeleteUser(usersGrid.SelectedItem);
 
-                if (res != null)
-                {
-                    Users.RemoveAt(usersGrid.SelectedIndex);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Пользователь успешно удален");
-            }
+        //        if (res != null)
+        //        {
+        //            Users.RemoveAt(usersGrid.SelectedIndex);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Пользователь успешно удален");
+        //    }
             
-        }
+        //}
 
-        private void MailsSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MailTableRowIndex = mailsGrid.SelectedIndex;
-        }
+        //private void MailsSelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    MailTableRowIndex = mailsGrid.SelectedIndex;
+        //}
 
-        private void AddMessage(object sender, RoutedEventArgs e)
-        {
-            AddMail addMail = new AddMail(UserId);
-            addMail.Show();
-        }
+        //private void AddMessage(object sender, RoutedEventArgs e)
+        //{
+        //    AddMail addMail = new AddMail(UserId);
+        //    addMail.Show();
+        //}
 
-        private void UpdateMessage(object sender, RoutedEventArgs e)
-        {
-            AddMail addMail = new AddMail(UserId);
-            addMail.Show();
-        }
+        //private void UpdateMessage(object sender, RoutedEventArgs e)
+        //{
+        //    AddMail addMail = new AddMail(UserId);
+        //    addMail.Show();
+        //}
 
-        private void GetAll(object sender, RoutedEventArgs e)
-        {
-            GetAllMailsForUser(UserId);
-        }
+        //private void GetAll(object sender, RoutedEventArgs e)
+        //{
+        //    GetAllMailsForUser(UserId);
+        //}
 
-        private void DeleteMessage(object sender, RoutedEventArgs e)
-        {
+        //private void DeleteMessage(object sender, RoutedEventArgs e)
+        //{
 
-        }
+        //}
     }
 }

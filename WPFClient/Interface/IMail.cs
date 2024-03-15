@@ -9,13 +9,13 @@ namespace WPFClient.Interface
 {
     public partial interface IMail
     {
-        public Task<Mail?> AddMail(Mail mail);
+        //public Task<Mail?> AddMail(Mail mail);
 
-        public Task<Mail?> UpdateMail(Mail mail);
+        //public Task<Mail?> UpdateMail(Mail mail);
 
-        public Task<IEnumerable<DtoMail>?> GetAllMails();
-        public Task<IEnumerable<DtoMail>?> GetAllMailsForUser(int userId);
-        public Task<bool?> DeleteMail(Mail mail);
-        public Task<DtoMail?> GetMail(int mailId);
+        //public Task<IEnumerable<DtoMail>?> GetAllMails();
+        //public Task<IEnumerable<DtoMail>?> GetAllMailsForUser(int userId);
+        //public Task<bool?> DeleteMail(Mail mail);
+        //public Task<DtoMail?> GetMail(int mailId);
     }
 }

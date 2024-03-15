@@ -15,9 +15,9 @@ namespace WPFClient.Service
         private readonly Repository.Authorization authorization = new Repository.Authorization();
 
 
-        public async Task<User?> GetUser(string login, string password)
-        {
-            return  await authorization.GetUser(login, password);
-        }
+        //public async Task<User?> GetUser(string login, string password)
+        //{
+        //    return  await authorization.GetUser(login, password);
+        //}
     }
 }

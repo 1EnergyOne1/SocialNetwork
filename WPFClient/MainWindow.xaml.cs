@@ -27,21 +27,21 @@ namespace WPFClient
 
         private async void getAuthorization(object sender, RoutedEventArgs e)
         {
-           var res = await userVM.getAuthorizationAsync();
-            if(res == true)
-            {
-                this.Close();
-            }
+           //var res = await userVM.getAuthorizationAsync();
+           // if(res == true)
+           // {
+           //     this.Close();
+           // }
         }
 
-        private void Login(object sender, TextChangedEventArgs e)
-        {
-            userVM.Login = Convert.ToString(log.Text);
-        }
+        //private void Login(object sender, TextChangedEventArgs e)
+        //{
+        //    userVM.Login = Convert.ToString(log.Text);
+        //}
 
-        private void Password(object sender, TextChangedEventArgs e)
-        {
-            userVM.Password = Convert.ToString(pass.Text);
-        }
+        //private void Password(object sender, TextChangedEventArgs e)
+        //{
+        //    userVM.Password = Convert.ToString(pass.Text);
+        //}
     }
 }
