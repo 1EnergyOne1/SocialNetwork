@@ -14,8 +14,8 @@ export class MailServices {
         return this._http.get(`https://localhost:7164/api/mail/GetAllMailsForUser?userId=${userId}`).toPromise();
     }
 
-    async getMail(login: string, password: string) {
-        return this._http.get(`https://localhost:7164/api/mail/GetMail`).toPromise();
+    async getMail(mailId: number) {
+        return this._http.get(`https://localhost:7164/api/mail/GetMail?mailId=${mailId}`).toPromise();
     }
 
     updateMail(mail: Mail) {
@@ -27,6 +27,6 @@ export class MailServices {
     }
 
     deleteMail(mailId: number) {
-        return this._http.get(`https://localhost:7164/api/mail/DeleteMail?mailId=${mailId}`).toPromise();
+        return this._http.delete(`https://localhost:7164/api/mail/DeleteMail?mailId=${mailId}`).toPromise();
     }
 }
