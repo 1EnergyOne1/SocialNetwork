@@ -25,6 +25,6 @@ namespace Api.Data.Models
 
         public bool isadmin { get; set; }
 
-        //public virtual ICollection<Mail> Mail { get; set; } = new List<Mail>();
+        public virtual ICollection<Mail> Mail { get; set; } = new List<Mail>();
     }
 }
