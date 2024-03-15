@@ -9,9 +9,9 @@ public partial class Mail
 {
     public int Id { get; set; }
 
-    public int UserId { get; set; }
+    public int Userid { get; set; }
 
-    public LocalDateTime DateSend { get; set; }
+    public LocalDateTime Datesend { get; set; }
 
     public string? Message { get; set; }
 
@@ -25,8 +25,8 @@ public partial class Mail
             return new Mail
             {
                 Id = v.id,
-                UserId = v.userId,
-                DateSend = v.dateSend,
+                Userid = v.userid,
+                Datesend = v.datesend,
                 Message = v.message
             };
         }

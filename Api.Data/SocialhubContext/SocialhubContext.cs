@@ -32,15 +32,15 @@ public partial class SocialhubContext : DbContext
 
             entity.ToTable("mails");
 
-            entity.HasIndex(e => e.UserId, "mails_user_id_idx");
+            entity.HasIndex(e => e.Userid, "mails_user_id_idx");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DateSend).HasColumnName("date_send");
+            entity.Property(e => e.Datesend).HasColumnName("date_send");
             entity.Property(e => e.Message).HasColumnName("message");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.Userid).HasColumnName("user_id");
 
             entity.HasOne(d => d.User).WithMany(p => p.Mail)
-                .HasForeignKey(d => d.UserId)
+                .HasForeignKey(d => d.Userid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("mails_user_id_fkey");
         });
