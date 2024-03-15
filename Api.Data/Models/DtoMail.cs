@@ -13,7 +13,7 @@ namespace Api.Data.Models
 
         public int userId { get; set; }
 
-        public Instant dateSend { get; set; }
+        public LocalDateTime dateSend { get; set; }
 
         public string? message { get; set; }
 

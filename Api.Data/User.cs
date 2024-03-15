@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Api.Data.Models;
 using NodaTime;
 
 namespace Api.Data;
@@ -23,4 +24,23 @@ public partial class User
     public bool Isadmin { get; set; }
 
     public virtual ICollection<Mail> Mail { get; set; } = new List<Mail>();
+
+    public static explicit operator User(DtoUser? v)
+    {
+        if (v is null) return null;
+        else
+        {
+            return new User
+            {
+                Id = v.id,
+                Name = v.name,
+                Lastname = v.lastname,
+                Login = v.login,
+                Password = v.password,
+                Age = v.age,
+                Datecreate = v.datecreate,
+                Isadmin = v.isadmin
+            };
+        }
+    }
 }

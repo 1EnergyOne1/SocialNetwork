@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,12 @@ namespace WPFClient.Interface
 {
     public partial interface IUser
     {
-        //public Task<User?> AddUser(string login, string password);
+        public Task<User?> AddUser(string login, string password);
 
-        //public Task<User?> UpdateUser(User user);
+        public Task<User?> UpdateUser(User user);
 
-        //public Task<IEnumerable<DtoUser>?> GetAllUsers();
+        public Task<IEnumerable<DtoUser>?> GetAllUsers();
 
-        //public Task<bool?> DeleteUser(User user);
+        public Task<bool?> DeleteUser(User user);
     }
 }

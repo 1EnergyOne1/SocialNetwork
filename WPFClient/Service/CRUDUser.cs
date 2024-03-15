@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,25 +15,25 @@ namespace WPFClient.Service
     {
         private readonly CRUDUserRepository CRUDUSer = new CRUDUserRepository();
 
-        //public async Task<User?> AddUser(string login, string password)
-        //{
-        //    return await CRUDUSer.AddUser(login, password);
-        //}
+        public async Task<User?> AddUser(string login, string password)
+        {
+            return await CRUDUSer.AddUser(login, password);
+        }
 
-        //public async Task<IEnumerable<DtoUser>?> GetAllUsers()
-        //{
-        //    return await CRUDUSer.GetAllUsers();
-        //}
+        public async Task<IEnumerable<DtoUser>?> GetAllUsers()
+        {
+            return await CRUDUSer.GetAllUsers();
+        }
 
-        //public async Task<User?> UpdateUser(User user)
-        //{
-        //    return await CRUDUSer.UpdateUser(user);
+        public async Task<User?> UpdateUser(User user)
+        {
+            return await CRUDUSer.UpdateUser(user);
 
-        //}
+        }
 
-        //public async Task<bool?> DeleteUser(User user)
-        //{
-        //    return await CRUDUSer.DeleteUser(user);
-        //}
+        public async Task<bool?> DeleteUser(User user)
+        {
+            return await CRUDUSer.DeleteUser(user);
+        }
     }
 }

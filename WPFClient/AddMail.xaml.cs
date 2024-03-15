@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using NodaTime;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace WPFClient
     /// </summary>
     public partial class AddMail : Window
     {
-        //Mail mail = new Mail();
+        Mail mail = new Mail();
         UserVM userVM = new UserVM();
         MailsVM mailsVM = new MailsVM();
         public int UserId { get; set; }
@@ -38,30 +39,30 @@ namespace WPFClient
         public AddMail(int userId)
         {
             InitializeComponent();
-            //mail.UserId = userId;
-            //getAllUsers();
-            //if(mail.Id != 0 || mail.Id != 1)
-            //    getMailAsync();
+            mail.UserId = userId;
+            getAllUsers();
+            if (mail.Id != 0 || mail.Id != 1)
+                getMailAsync();
         }
 
         private void getAllUsers()
         {
-            //usersComboBox.ItemsSource = (System.Collections.IEnumerable)userVM.GetAllUsers();
+            usersComboBox.ItemsSource = (System.Collections.IEnumerable)userVM.GetAllUsers();
         }
 
         private async Task getMailAsync()
         {
-            //var res = await mailsVM.GetMail(mail.Id);
-            //if(res != null)
-            //{
-            //    mail = (Mail)res;                
-            //}
+            var res = await mailsVM.GetMail(mail.Id);
+            if (res != null)
+            {
+                mail = (Mail)res;
+            }
         }
 
         private void AddMessage(object sender, RoutedEventArgs e)
         {
-            //mail.Message = textMessage.Text;
-            //var res = mailsVM.AddMail(mail);
+            mail.Message = textMessage.Text;
+            var res = mailsVM.AddMail(mail);
         }
 
         private void CloseWindow(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace WPFClient.Service
         private readonly Repository.Authorization authorization = new Repository.Authorization();
 
 
-        //public async Task<User?> GetUser(string login, string password)
-        //{
-        //    return  await authorization.GetUser(login, password);
-        //}
+        public async Task<User?> GetUser(string login, string password)
+        {
+            return await authorization.GetUser(login, password);
+        }
     }
 }
