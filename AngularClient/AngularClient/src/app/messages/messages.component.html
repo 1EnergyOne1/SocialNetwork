@@ -1,0 +1,32 @@
+<div class="table-view">
+    <table mat-table class="table-content" [dataSource]="mails">
+
+        <ng-container matColumnDef="Сообщение">
+            <th mat-header-cell *matHeaderCellDef> Сообщение </th>
+            <td mat-cell *matCellDef="let mail"> {{mail.message}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="От кого">
+            <th mat-header-cell *matHeaderCellDef> От кого </th>
+            <td mat-cell *matCellDef="let mail"> {{mail.userid}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Дата сообщения">
+            <th mat-header-cell *matHeaderCellDef> Дата сообщения </th>
+            <td mat-cell *matCellDef="let mail"> {{mail.datesend}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div class="buttons-view">
+        <div class="example-button-row">
+            <button mat-raised-button color="warn" title="Отправить запрос Get" (click)="addMail()">Добавить
+                сообщение</button>
+        </div>
+        <div class="example-button-row">
+            <button mat-raised-button color="warn" title="Отправить запрос Get" (click)="deleteMail()">Удалить
+                сообщение</button>
+        </div>
+    </div>
+</div>

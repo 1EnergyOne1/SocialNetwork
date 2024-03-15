@@ -1,1 +1,25 @@
-<h1>Клиент загружен</h1>
+<div class="user-info-view">
+    <mat-form-field class="example-full-width">
+        <mat-label>Логин</mat-label>
+        <input matInput [(ngModel)]="user.name" placeholder="Имя" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Логин</mat-label>
+        <input matInput [(ngModel)]="user.lastname" placeholder="Фамилия" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Логин</mat-label>
+        <input matInput [(ngModel)]="user.age" placeholder="Возраст" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Логин</mat-label>
+        <input matInput [(ngModel)]="user.login" placeholder="Логин" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Логин</mat-label>
+        <input matInput [(ngModel)]="user.password" placeholder="Пароль" />
+    </mat-form-field>
+    <div class="example-button-row">
+        <button mat-raised-button color="warn" title="Отправить запрос Get" (click)="updateUser()">Сохранить данные</button>
+    </div>
+</div>

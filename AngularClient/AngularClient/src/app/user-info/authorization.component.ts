@@ -9,27 +9,23 @@ import { User } from "src/models/user";
 })
 export class AuthorizationComponent {
 
-  public login: string = "";
-  public password: string = "";
+  public login: string = "energyone";
+  public password: string = "4876";
   user: User = new User();
   Islogged: boolean = false;
 
   constructor(private _UserServices: UserServices) { }
 
   async getUser() {
-    this._UserServices.getUser(this.login, this.password).subscribe({
-      next: (data: any) => {
-        this.user = data;
+    this._UserServices.getUser(this.login, this.password).then(
+      result => {
+        this.user = result as User;
+        let s = this.user;
         this.Islogged = true;
-      }
-    })
-  }
+      },
+      error => {
 
-  /* async getUsers() {
-    this._UserServices.getAllUsers().subscribe({
-      next: (data: any) => {
-        this.users = data.result;
       }
-    })
-  } */
+    );
+  }
 }

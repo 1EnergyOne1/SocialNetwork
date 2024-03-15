@@ -7,6 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { AuthorizationModule } from './user-info/authorization.module';
 import { ExportToExcelModule } from './export-to-excel/export-to-excel.module';
 import { MainUserViewModule } from './main-user-view/main-user-view.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MessagesModule } from './messages/messages.module';
+import { AllUsersModule } from './all-users/all-users.module';
+import { MatDialog } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -18,9 +22,12 @@ import { MainUserViewModule } from './main-user-view/main-user-view.module';
     FormsModule,
     AuthorizationModule,
     ExportToExcelModule,
-    MainUserViewModule
+    MainUserViewModule,
+    NoopAnimationsModule,
+    MessagesModule,
+    AllUsersModule
   ],
-  providers: [],
+  providers: [MatDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

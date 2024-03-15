@@ -1,0 +1,26 @@
+<div class="authorization-view">
+    <mat-form-field class="example-full-width">
+        <mat-label>Логин</mat-label>
+        <input matInput [(ngModel)]="user.login" placeholder="Логин">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Пароль</mat-label>
+        <input matInput [(ngModel)]="user.password" placeholder="Пароль" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Фамилия</mat-label>
+        <input matInput [(ngModel)]="user.name" placeholder="Фамилия">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Имя</mat-label>
+        <input matInput [(ngModel)]="user.lastname" placeholder="Имя">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Возраст</mat-label>
+        <input matInput [(ngModel)]="user.age" placeholder="Возраст">
+    </mat-form-field>
+    <div class="example-button-row">
+        <button mat-raised-button color="accent" title="Отправить запрос Get" (click)="addUser()">Добавить
+            пользователя</button>
+    </div>
+</div>

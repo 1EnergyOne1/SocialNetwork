@@ -1,0 +1,17 @@
+<div class="authorization-view">
+    <mat-form-field>
+        <mat-select placeholder="Пользователи" [(ngModel)]="mail.userid">
+            <mat-option *ngFor="let user of users" [value]="user.id">
+                {{ user.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Сообщение</mat-label>
+        <input matInput [(ngModel)]="mail.message" placeholder="Сообщение" />
+    </mat-form-field>
+    <div class="example-button-row">
+        <button mat-raised-button color="accent" title="Отправить запрос Get" (click)="addMail()">Добавить
+            сообщение</button>
+    </div>
+</div>
