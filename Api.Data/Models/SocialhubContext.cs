@@ -15,7 +15,6 @@ public partial class SocialhubContext : DbContext
     {
     }
 
-    public virtual DbSet<Mail> Mails { get; set; }
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -24,26 +23,6 @@ public partial class SocialhubContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Mail>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("mails_pkey");
-
-            entity.ToTable("mails");
-
-            entity.HasIndex(e => e.UserId, "mails_user_id_idx");
-
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DateSend)
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnName("date_send");
-            entity.Property(e => e.Message).HasColumnName("message");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Mail)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("mails_user_id_fkey");
-        });
 
         modelBuilder.Entity<User>(entity =>
         {

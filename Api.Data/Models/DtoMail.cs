@@ -17,6 +17,6 @@ namespace Api.Data.Models
 
         public string? message { get; set; }
 
-        public virtual User user { get; set; } = null!;
+        //public virtual User user { get; set; } = null!;
     }
 }
