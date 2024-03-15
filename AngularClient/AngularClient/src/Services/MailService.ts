@@ -18,10 +18,6 @@ export class MailServices {
         return this._http.get(`https://localhost:7164/api/mail/GetMail?mailId=${mailId}`).toPromise();
     }
 
-    updateMail(mail: Mail) {
-        return this._http.put(`https://localhost:7164/api/mail/UpdateMail`, mail).toPromise()
-    }
-
     addMail(mail: Mail) {
         return this._http.post(`https://localhost:7164/api/mail/AddMail`, mail).toPromise();
     }

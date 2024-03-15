@@ -39,13 +39,6 @@ namespace Api.Main.Controllers
             return await mails.AddMail(mail, ct);
         }
 
-        [Route("UpdateMail")]
-        [HttpPut]
-        public async Task<ActionResult<Mail?>> UpdateMail([FromBody] Mail mail, CancellationToken ct)
-        {
-            return await mails.UpdateMail(mail, ct);
-        }
-
         [Route("DeleteMail")]
         [HttpDelete]
         public async Task<ActionResult<bool?>> DeleteMail([FromQuery] int mailId, CancellationToken ct)

@@ -26,11 +26,6 @@ namespace Api.Main.Services
             return await repository.AddMail(mail, ct);
         }
 
-        public async Task<Api.Data.Mail?> UpdateMail(Api.Data.Mail mail, CancellationToken ct)
-        {
-            return await repository.UpdateMail(mail, ct);
-        }
-
         public async Task<bool?> DeleteMail(int mailId, CancellationToken ct)
         {
             return await repository.DeleteMail(mailId, ct);
