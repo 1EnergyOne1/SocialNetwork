@@ -48,9 +48,10 @@ namespace Api.Main.Repository
         {
             try
             {
+
                 db.Mails.Add(mail);
                 db.SaveChanges();
-                return await db.Mails.Where(x => x.Message == mail.Message).FirstOrDefaultAsync(ct);
+                return await db.Mails.Where(x => x.Id == mail.Id).FirstOrDefaultAsync(ct);
             }
             catch (Exception ex)
             {
