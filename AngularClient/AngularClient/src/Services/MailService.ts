@@ -7,26 +7,26 @@ import { User } from "src/models/user";
 export class MailServices {
     constructor(private _http: HttpClient) { }
     getAllMails() {
-        return this._http.get(`https://localhost:7164/api/mails/GetAllMails`).toPromise();
+        return this._http.get(`https://localhost:7164/api/mail/GetAllMails`).toPromise();
     }
 
     getAllMailsForUser(userId?: number) {
-        return this._http.get(`https://localhost:7164/api/mails/GetAllMailsForUser?userId=${userId}`).toPromise();
+        return this._http.get(`https://localhost:7164/api/mail/GetAllMailsForUser?userId=${userId}`).toPromise();
     }
 
     async getMail(login: string, password: string) {
-        return this._http.get(`https://localhost:7164/api/mails/GetMail`).toPromise();
+        return this._http.get(`https://localhost:7164/api/mail/GetMail`).toPromise();
     }
 
     updateMail(mail: Mail) {
-        return this._http.put(`https://localhost:7164/api/mails/UpdateMail`, mail).toPromise()
+        return this._http.put(`https://localhost:7164/api/mail/UpdateMail`, mail).toPromise()
     }
 
     addMail(mail: Mail) {
-        return this._http.post(`https://localhost:7164/api/mails/AddMail`, mail).toPromise();
+        return this._http.post(`https://localhost:7164/api/mail/AddMail`, mail).toPromise();
     }
 
     deleteMail(mailId: number) {
-        return this._http.get(`https://localhost:7164/api/mails/DeleteMail?mailId=${mailId}`).toPromise();
+        return this._http.get(`https://localhost:7164/api/mail/DeleteMail?mailId=${mailId}`).toPromise();
     }
 }

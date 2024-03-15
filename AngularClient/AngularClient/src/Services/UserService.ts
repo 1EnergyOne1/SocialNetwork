@@ -22,6 +22,6 @@ export class UserServices {
     }
 
     deleteUser(userId: number) {
-        return this._http.get(`https://localhost:7164/api/users/DeleteUser?id=${userId}`).toPromise();
+        return this._http.delete(`https://localhost:7164/api/users/DeleteUser?id=${userId}`).toPromise();
     }
 }

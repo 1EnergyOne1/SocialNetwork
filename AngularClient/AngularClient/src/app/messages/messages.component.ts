@@ -2,6 +2,8 @@ import { Component, Input } from "@angular/core";
 import { MailServices } from "src/Services/MailService";
 import { Mail } from "src/models/Mail";
 import { User } from "src/models/user";
+import { MatDialog } from '@angular/material/dialog';
+import { AddMessageComponent } from "./add-message/add-message.component";
 
 @Component({
   selector: 'messages',
@@ -15,7 +17,7 @@ export class MessagesComponent {
   user: User = new User();
   mails: Mail[] = [];
 
-  constructor(private _mailService: MailServices) { }
+  constructor(private _mailService: MailServices, public dialog: MatDialog) { }
   ngOnInit(): void {
     this.getMessagesFromUser();
   }
@@ -32,7 +34,16 @@ export class MessagesComponent {
   }
 
   async addMail() {
+    const dialogRef = this.dialog.open(AddMessageComponent, {
+      data: {
 
+      },
+      height: '60%',
+      width: '30%'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.getMessagesFromUser();
+    });
   }
 
   async deleteMail() {

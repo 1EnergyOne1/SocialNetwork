@@ -7,9 +7,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AllUsersComponent } from './all-users.component';
 import { MatTableModule } from '@angular/material/table';
+import { AddUserComponent } from './add-user/add-user.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [AllUsersComponent
+  declarations: [AllUsersComponent, AddUserComponent
   ],
   imports: [
     HttpClientModule,
@@ -17,7 +19,8 @@ import { MatTableModule } from '@angular/material/table';
     CommonModule,
     MatButtonModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   exports: [AllUsersComponent],
   providers: [UserServices]

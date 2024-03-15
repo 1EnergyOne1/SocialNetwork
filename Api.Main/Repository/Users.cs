@@ -39,8 +39,7 @@ namespace Api.Main.Repository
                 if(user.Isadmin)
                 {
                     user.Isadmin = false;
-                }                
-                user.Datecreate = new LocalDateTime();
+                }
                 db.Users.Add(user);
                 db.SaveChanges();
                 return await db.Users.Where(x => x.Login == user.Login && x.Password == user.Password).FirstOrDefaultAsync(ct);

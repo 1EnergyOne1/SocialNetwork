@@ -10,6 +10,7 @@ import { MainUserViewModule } from './main-user-view/main-user-view.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from './messages/messages.module';
 import { AllUsersModule } from './all-users/all-users.module';
+import { MatDialog } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AllUsersModule } from './all-users/all-users.module';
     MessagesModule,
     AllUsersModule
   ],
-  providers: [],
+  providers: [MatDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
