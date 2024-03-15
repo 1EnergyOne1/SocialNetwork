@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Api.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Api.Data.Models;
+namespace Api.Data.SocialhubContext;
 
 public partial class SocialhubContext : DbContext
 {
@@ -16,6 +17,7 @@ public partial class SocialhubContext : DbContext
     }
 
     public virtual DbSet<Mail> Mails { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,17 +32,15 @@ public partial class SocialhubContext : DbContext
 
             entity.ToTable("mails");
 
-            entity.HasIndex(e => e.UserId, "mails_user_id_idx");
+            entity.HasIndex(e => e.Userid, "mails_user_id_idx");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DateSend)
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnName("date_send");
+            entity.Property(e => e.Datesend).HasColumnName("date_send");
             entity.Property(e => e.Message).HasColumnName("message");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.Userid).HasColumnName("user_id");
 
             entity.HasOne(d => d.User).WithMany(p => p.Mail)
-                .HasForeignKey(d => d.UserId)
+                .HasForeignKey(d => d.Userid)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("mails_user_id_fkey");
         });

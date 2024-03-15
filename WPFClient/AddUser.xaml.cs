@@ -32,7 +32,7 @@ namespace WPFClient
             var res = await userVM.AddUser();
             if (res != null)
             {
-                MessageBox.Show("Пользователь добавлен");                
+                MessageBox.Show("Пользователь добавлен");
             }
             else
             {

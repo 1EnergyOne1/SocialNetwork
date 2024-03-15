@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;

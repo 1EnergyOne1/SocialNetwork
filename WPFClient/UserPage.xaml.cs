@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using NodaTime;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace WPFClient
     {
         UserVM vm = new UserVM();
         MailsVM mailsVM = new MailsVM();
-        public User User { get; set; }        
+        public User User { get; set; }
         List<User> Users = new List<User>();
         public Mail Mail { get; set; }
         List<Mail> Mails = new List<Mail>();
@@ -76,24 +77,24 @@ namespace WPFClient
                 GetAllUsers();
                 GetAllMailsForUser(User.Id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Ошибка подкючения к серверу/ошибка выполения запроса");
-            }            
+            }
         }
 
         private async void GetAllUsers()
         {
             var res = await vm.GetAllUsers();
-            if(res != null)
+            if (res != null)
             {
                 var DtoUsers = res.ToArray();
-                foreach(var DtoUser in DtoUsers)
+                foreach (var DtoUser in DtoUsers)
                 {
                     Users.Add((User)DtoUser);
                 }
                 usersGrid.ItemsSource = Users;
-            }            
+            }
         }
 
         private async void GetAllMailsForUser(int userId)
@@ -125,7 +126,7 @@ namespace WPFClient
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
+
             if (User != null)
             {
                 var result = vm.UpdateUser(User);
@@ -134,17 +135,17 @@ namespace WPFClient
 
         private void Name(object sender, TextChangedEventArgs e)
         {
-            if(!string.IsNullOrEmpty(name.Text))
+            if (!string.IsNullOrEmpty(name.Text))
                 User.Name = Convert.ToString(name.Text);
             else
             {
-                if(!string.IsNullOrEmpty(User.Name))
+                if (!string.IsNullOrEmpty(User.Name))
                     name.Text = User.Name;
             }
         }
 
-        private void LastName(object sender, TextChangedEventArgs e)
-        {
+    private void LastName(object sender, TextChangedEventArgs e)
+    {
             if (!string.IsNullOrEmpty(lastName.Text))
                 User.Lastname = Convert.ToString(lastName.Text);
             else
@@ -154,95 +155,95 @@ namespace WPFClient
             }
         }
 
-        private void Age(object sender, TextChangedEventArgs e)
+    private void Age(object sender, TextChangedEventArgs e)
+    {
+        try
         {
-            try
-            {
-                if (!string.IsNullOrEmpty(age.Text))
-                    User.Age = Convert.ToInt32(age.Text);
-                else
-                {
-                    if (!string.IsNullOrEmpty(User.Age.ToString()))
-                        age.Text = User.Age.ToString();
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Вводить только цифровые значения");
-            }
-            
-        }
-
-        private void Login(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(login.Text))
-                User.Login = Convert.ToString(login.Text);
+            if (!string.IsNullOrEmpty(age.Text))
+                User.Age = Convert.ToInt32(age.Text);
             else
             {
-                if (!string.IsNullOrEmpty(User.Login))
-                    login.Text = User.Login;
+                if (!string.IsNullOrEmpty(User.Age.ToString()))
+                    age.Text = User.Age.ToString();
             }
         }
-
-        private void Password(object sender, TextChangedEventArgs e)
+        catch (Exception ex)
         {
-            if (!string.IsNullOrEmpty(password.Text))
-                User.Password = Convert.ToString(password.Text);
-            else
-            {
-                if (!string.IsNullOrEmpty(User.Password))
-                    password.Text = User.Password;
-            }
+            MessageBox.Show("Вводить только цифровые значения");
         }
 
-        private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    }
+
+    private void Login(object sender, TextChangedEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(login.Text))
+            User.Login = Convert.ToString(login.Text);
+        else
         {
-           UserTableRowIndex = usersGrid.SelectedIndex;
-        }
-
-        private void DeleteUser(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                var res = vm.DeleteUser(usersGrid.SelectedItem);
-
-                if (res != null)
-                {
-                    Users.RemoveAt(usersGrid.SelectedIndex);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Пользователь успешно удален");
-            }
-            
-        }
-
-        private void MailsSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MailTableRowIndex = mailsGrid.SelectedIndex;
-        }
-
-        private void AddMessage(object sender, RoutedEventArgs e)
-        {
-            AddMail addMail = new AddMail(UserId);
-            addMail.Show();
-        }
-
-        private void UpdateMessage(object sender, RoutedEventArgs e)
-        {
-            AddMail addMail = new AddMail(UserId);
-            addMail.Show();
-        }
-
-        private void GetAll(object sender, RoutedEventArgs e)
-        {
-            GetAllMailsForUser(UserId);
-        }
-
-        private void DeleteMessage(object sender, RoutedEventArgs e)
-        {
-
+            if (!string.IsNullOrEmpty(User.Login))
+                login.Text = User.Login;
         }
     }
+
+    private void Password(object sender, TextChangedEventArgs e)
+    {
+        if (!string.IsNullOrEmpty(password.Text))
+            User.Password = Convert.ToString(password.Text);
+        else
+        {
+            if (!string.IsNullOrEmpty(User.Password))
+                password.Text = User.Password;
+        }
+    }
+
+    private async void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        UserTableRowIndex = usersGrid.SelectedIndex;
+    }
+
+    private void DeleteUser(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            var res = vm.DeleteUser(usersGrid.SelectedItem);
+
+            if (res != null)
+            {
+                Users.RemoveAt(usersGrid.SelectedIndex);
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Пользователь успешно удален");
+        }
+
+    }
+
+    private void MailsSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        MailTableRowIndex = mailsGrid.SelectedIndex;
+    }
+
+    private void AddMessage(object sender, RoutedEventArgs e)
+    {
+        AddMail addMail = new AddMail(UserId);
+        addMail.Show();
+    }
+
+    private void UpdateMessage(object sender, RoutedEventArgs e)
+    {
+        AddMail addMail = new AddMail(UserId);
+        addMail.Show();
+    }
+
+    private void GetAll(object sender, RoutedEventArgs e)
+    {
+        GetAllMailsForUser(UserId);
+    }
+
+    private void DeleteMessage(object sender, RoutedEventArgs e)
+    {
+
+    }
+}
 }

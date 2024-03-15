@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using WPFClient.Interface;
+using Api.Data;
 
 namespace WPFClient.Repository
 {
@@ -63,7 +64,7 @@ namespace WPFClient.Repository
         public async Task<Mail?> AddMail(Mail mail)
         {
             try
-            {                
+            {
                 var jsonContent = JsonContent.Create(mail);
                 var response = await httpClient.PostAsync($"https://localhost:7164/api/mail/AddMail", jsonContent).ConfigureAwait(false);
                 var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -105,6 +106,6 @@ namespace WPFClient.Repository
             {
                 return null;
             }
-        }        
+        }
     }
 }

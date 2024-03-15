@@ -11,9 +11,9 @@ namespace Api.Data.Models
     {
         public int id { get; set; }
 
-        public int userId { get; set; }
+        public int userid { get; set; }
 
-        public Instant dateSend { get; set; }
+        public LocalDateTime datesend { get; set; }
 
         public string? message { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace WPFClient.vm
             var res = await auth.GetUser(login, password);
             if (res.Id != null)
             {
-                UserPage page = new UserPage(res);                
+                UserPage page = new UserPage(res);
                 page.Show();
                 return true;
             }

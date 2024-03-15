@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Api.Data.Models;
 using NodaTime;
 
-namespace Api.Data.Models;
+namespace Api.Data;
 
 public partial class User
 {
@@ -26,7 +27,7 @@ public partial class User
 
     public static explicit operator User(DtoUser? v)
     {
-        if(v is null) return null;
+        if (v is null) return null;
         else
         {
             return new User

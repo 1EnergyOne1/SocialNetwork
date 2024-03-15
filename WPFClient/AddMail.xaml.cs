@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using NodaTime;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace WPFClient
             InitializeComponent();
             mail.UserId = userId;
             getAllUsers();
-            if(mail.Id != 0 || mail.Id != 1)
+            if (mail.Id != 0 || mail.Id != 1)
                 getMailAsync();
         }
 
@@ -52,9 +53,9 @@ namespace WPFClient
         private async Task getMailAsync()
         {
             var res = await mailsVM.GetMail(mail.Id);
-            if(res != null)
+            if (res != null)
             {
-                mail = (Mail)res;                
+                mail = (Mail)res;
             }
         }
 

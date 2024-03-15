@@ -64,13 +64,12 @@ export class AddMessageComponent implements OnInit {
             this.mail.id = this.count;
         else
             this.mail.id = this.count + 1;
-        this.mail.datesend = new Date();
         await this._MailServices.addMail(this.mail).then(
             result => {
                 this.dialogRef.close();
             },
             error => {
-                console.log("Ошибка добавления пользователя");
+                console.log("Ошибка добавления сообщения");
             }
         )
     }

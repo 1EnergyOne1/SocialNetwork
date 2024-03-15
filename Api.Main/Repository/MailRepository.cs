@@ -1,4 +1,6 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
+using Api.Data.SocialhubContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Main.Repository
@@ -22,7 +24,7 @@ namespace Api.Main.Repository
         {
             try
             {
-                return await db.Mails.Where(x => x.UserId == userId).ToArrayAsync(ct);
+                return await db.Mails.Where(x => x.Userid == userId).ToArrayAsync(ct);
             }
             catch (Exception ex)
             {
@@ -46,21 +48,8 @@ namespace Api.Main.Repository
         {
             try
             {
-                db.Mails.Add(mail);
-                db.SaveChanges();
-                return await db.Mails.Where(x => x.Message == mail.Message).FirstOrDefaultAsync(ct);
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
 
-        public async Task<Mail?> UpdateMail(Mail mail, CancellationToken ct)
-        {
-            try
-            {
-                db.Mails.Update(mail);
+                db.Mails.Add(mail);
                 db.SaveChanges();
                 return await db.Mails.Where(x => x.Id == mail.Id).FirstOrDefaultAsync(ct);
             }
@@ -77,6 +66,24 @@ namespace Api.Main.Repository
                 var res = await db.Mails.Where(x => x.Id == mailId).FirstOrDefaultAsync(ct);
                 db.Mails.Remove(res);
                 return true;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public async Task<User?> AddUser(User user, CancellationToken ct)
+        {
+            try
+            {
+                if (user.Isadmin)
+                {
+                    user.Isadmin = false;
+                }
+                db.Users.Add(user);
+                db.SaveChanges();
+                return await db.Users.Where(x => x.Login == user.Login && x.Password == user.Password).FirstOrDefaultAsync(ct);
             }
             catch (Exception ex)
             {

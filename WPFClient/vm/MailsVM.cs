@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace WPFClient.vm
     public class MailsVM
     {
         public Mail Data { get; set; }
-        CRUDMailsService CRUDMailsService { get; set;}
+        CRUDMailsService CRUDMailsService { get; set; }
 
         public async Task<Mail?> AddMail(Mail mail)
         {

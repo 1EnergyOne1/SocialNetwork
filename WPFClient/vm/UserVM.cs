@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows;
 using WPFClient.Service;
 using WPFClient.Interface;
+using Api.Data;
 
 namespace WPFClient.vm
 {
@@ -19,7 +20,7 @@ namespace WPFClient.vm
         Authorization auth = new Authorization();
         CRUDUser crudser = new CRUDUser();
         public string Login { get; set; }
-        public string Password { get; set; }        
+        public string Password { get; set; }
 
         public async Task<bool> getAuthorizationAsync()
         {
@@ -37,7 +38,7 @@ namespace WPFClient.vm
                 MessageBox.Show("Ошибка подкючения к серверу/ошибка выполения запроса");
                 return false;
             }
-            
+
         }
 
         public async Task<User?> AddUser()

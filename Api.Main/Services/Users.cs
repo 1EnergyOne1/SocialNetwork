@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Main.Services

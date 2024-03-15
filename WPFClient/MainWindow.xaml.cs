@@ -27,8 +27,8 @@ namespace WPFClient
 
         private async void getAuthorization(object sender, RoutedEventArgs e)
         {
-           var res = await userVM.getAuthorizationAsync();
-            if(res == true)
+            var res = await userVM.getAuthorizationAsync();
+            if (res == true)
             {
                 this.Close();
             }

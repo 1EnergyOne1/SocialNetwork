@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,13 +37,6 @@ namespace Api.Main.Controllers
         public async Task<ActionResult<Mail?>> AddMail([FromBody] Mail mail, CancellationToken ct)
         {
             return await mails.AddMail(mail, ct);
-        }
-
-        [Route("UpdateMail")]
-        [HttpPut]
-        public async Task<ActionResult<Mail?>> UpdateMail([FromBody] Mail mail, CancellationToken ct)
-        {
-            return await mails.UpdateMail(mail, ct);
         }
 
         [Route("DeleteMail")]

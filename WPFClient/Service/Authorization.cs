@@ -1,4 +1,5 @@
-﻿using Api.Data.Models;
+﻿using Api.Data;
+using Api.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace WPFClient.Service
 
         public async Task<User?> GetUser(string login, string password)
         {
-            return  await authorization.GetUser(login, password);
+            return await authorization.GetUser(login, password);
         }
     }
 }
