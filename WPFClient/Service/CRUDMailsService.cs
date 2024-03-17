@@ -24,11 +24,6 @@ namespace WPFClient.Service
             return await CRUDMail.GetAllMails();
         }
 
-        public async Task<Mail?> UpdateMail(Mail mail)
-        {
-            return await CRUDMail.UpdateMail(mail);
-        }
-
         public async Task<bool?> DeleteMail(Mail mail)
         {
             return await CRUDMail.DeleteMail(mail);

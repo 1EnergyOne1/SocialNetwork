@@ -47,7 +47,14 @@ namespace WPFClient
 
         private void getAllUsers()
         {
-            usersComboBox.ItemsSource = (System.Collections.IEnumerable)userVM.GetAllUsers();
+            try
+            {
+                usersComboBox.ItemsSource = (System.Collections.IEnumerable)userVM.GetAllUsers();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка получения пользователей для создания нового письма");
+            }
         }
 
         private async Task getMailAsync()

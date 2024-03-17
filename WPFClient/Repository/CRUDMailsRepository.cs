@@ -77,22 +77,6 @@ namespace WPFClient.Repository
             }
         }
 
-        public async Task<Mail?> UpdateMail(Mail mail)
-        {
-            try
-            {
-                var jsonContent = JsonContent.Create(mail);
-                var response = await httpClient.PutAsync($"https://localhost:7164/api/mail/UpdateMail", jsonContent).ConfigureAwait(false);
-                var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var forDtoMail = JsonSerializer.Deserialize<DtoMail>(res);
-                return (Mail)forDtoMail;
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
-        }
-
         public async Task<bool?> DeleteMail(Mail mail)
         {
             try
