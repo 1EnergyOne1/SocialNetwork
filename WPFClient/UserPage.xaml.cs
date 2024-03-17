@@ -230,12 +230,6 @@ namespace WPFClient
         addMail.Show();
     }
 
-    private void UpdateMessage(object sender, RoutedEventArgs e)
-    {
-        AddMail addMail = new AddMail(UserId);
-        addMail.Show();
-    }
-
     private void GetAll(object sender, RoutedEventArgs e)
     {
         GetAllMailsForUser(UserId);

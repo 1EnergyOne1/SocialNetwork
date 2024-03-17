@@ -29,9 +29,17 @@ namespace WPFClient.vm
             try
             {
                 var res = await auth.GetUser(login, password);
-                UserPage page = new UserPage(res);
-                page.Show();
-                return true;
+                if (res == null)
+                {
+                    MessageBox.Show("Такой пользователь не найден. Обратитесь к администратору");
+                    return false;
+                }                    
+                else
+                {
+                    UserPage page = new UserPage(res);
+                    page.Show();
+                    return true;
+                }                
             }
             catch (Exception ex)
             {
