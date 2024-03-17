@@ -9,14 +9,14 @@ namespace Api.Data.Models
 {
     public partial class DtoMail
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public int userid { get; set; }
+        public int Touserid { get; set; }
 
-        public LocalDateTime datesend { get; set; }
+        public int Fromuserud { get; set; }
 
-        public string? message { get; set; }
+        public LocalDateTime Datesend { get; set; }
 
-        public virtual User user { get; set; } = null!;
+        public string? Message { get; set; }
     }
 }
