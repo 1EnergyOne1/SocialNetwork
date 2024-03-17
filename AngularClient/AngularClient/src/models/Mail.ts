@@ -1,6 +1,7 @@
 export class Mail {
-    id?: number;
-    userid?: number;
-    datesend?: Date;
+    id?: number;    
+    toUserId?: number;
+    fromUserId?: number;
+    dateSend?: Date;
     message?: string;
 }

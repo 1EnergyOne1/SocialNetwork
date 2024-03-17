@@ -1,6 +1,13 @@
 <div class="authorization-view">
     <mat-form-field>
-        <mat-select placeholder="Пользователи" [(ngModel)]="mail.userid">
+        <mat-select placeholder="Для пользователя" [(ngModel)]="mail.toUserId">
+            <mat-option *ngFor="let user of users" [value]="user.id">
+                {{ user.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="От кого" [(ngModel)]="mail.fromUserId">
             <mat-option *ngFor="let user of users" [value]="user.id">
                 {{ user.name }}
             </mat-option>
