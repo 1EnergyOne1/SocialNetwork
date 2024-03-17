@@ -39,7 +39,7 @@ namespace WPFClient
         public AddMail(int userId)
         {
             InitializeComponent();
-            mail.UserId = userId;
+            mail.Userid = userId;
             getAllUsers();
             if (mail.Id != 0 || mail.Id != 1)
                 getMailAsync();
