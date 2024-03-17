@@ -24,7 +24,5 @@ namespace Api.Data.Models
         public LocalDateTime datecreate { get; set; }
 
         public bool isadmin { get; set; }
-
-        public virtual ICollection<Mail> Mail { get; set; } = new List<Mail>();
     }
 }

@@ -13,7 +13,7 @@ namespace Api.Data.Models
 
         public int Touserid { get; set; }
 
-        public int Fromuserud { get; set; }
+        public int Fromuserid { get; set; }
 
         public LocalDateTime Datesend { get; set; }
 

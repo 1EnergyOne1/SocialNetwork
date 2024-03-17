@@ -18,7 +18,7 @@ namespace WPFClient.vm
         public User Data { get; set; }
 
         Authorization auth = new Authorization();
-        CRUDUser crudser = new CRUDUser();
+        CRUDUser cruduser = new CRUDUser();
         public string Login { get; set; }
         public string Password { get; set; }
 
@@ -29,9 +29,17 @@ namespace WPFClient.vm
             try
             {
                 var res = await auth.GetUser(login, password);
-                UserPage page = new UserPage(res);
-                page.Show();
-                return true;
+                if (res == null)
+                {
+                    MessageBox.Show("Такой пользователь не найден. Обратитесь к администратору");
+                    return false;
+                }                    
+                else
+                {
+                    UserPage page = new UserPage(res);
+                    page.Show();
+                    return true;
+                }                
             }
             catch (Exception ex)
             {
@@ -43,24 +51,24 @@ namespace WPFClient.vm
 
         public async Task<User?> AddUser()
         {
-            var res = await crudser.AddUser(Login, Password);
+            var res = await cruduser.AddUser(Login, Password);
             return res;
         }
 
         public async Task<User?> UpdateUser(User user)
         {
-            return await crudser.UpdateUser(user);
+            return await cruduser.UpdateUser(user);
         }
 
         public async Task<IEnumerable<DtoUser>?> GetAllUsers()
         {
-            return await crudser.GetAllUsers();
+            return await cruduser.GetAllUsers();
         }
 
         public async Task<bool?> DeleteUser(object user)
         {
             var res = (User)user;
-            return await crudser.DeleteUser(res);
+            return await cruduser.DeleteUser(res);
         }
     }
 }

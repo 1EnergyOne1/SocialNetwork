@@ -26,9 +26,10 @@ namespace WPFClient
         Mail mail = new Mail();
         UserVM userVM = new UserVM();
         MailsVM mailsVM = new MailsVM();
+        List<User> Users = new List<User>();
         public int UserId { get; set; }
 
-        public Instant DateSend { get; set; }
+        public LocalDateTime DateSend { get; set; }
 
         public string? Message { get; set; }
         public AddMail()
@@ -45,9 +46,23 @@ namespace WPFClient
                 getMailAsync();
         }
 
-        private void getAllUsers()
+        private async void getAllUsers()
         {
-            usersComboBox.ItemsSource = (System.Collections.IEnumerable)userVM.GetAllUsers();
+            try
+            {
+                var res = await userVM.GetAllUsers();
+                foreach (var DtoUser in res)
+                {
+                   var k = (User)DtoUser;
+                   Users.Add(k);
+                }
+                toUsersComboBox.ItemsSource = Users.Select(x => x.Id);
+                fromUsersComboBox.ItemsSource = Users.Select(x => x.Id);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка получения пользователей для создания нового письма");
+            }
         }
 
         private async Task getMailAsync()
@@ -70,9 +85,14 @@ namespace WPFClient
             this.Close();
         }
 
-        private void selectedUser(object sender, SelectionChangedEventArgs e)
+        private void selectedToUser(object sender, SelectionChangedEventArgs e)
         {
-            var item = usersComboBox.SelectedItem;
+            mail.ToUserId = (Int32)toUsersComboBox.SelectedItem;
+        }
+
+        private void selectedFromUser(object sender, SelectionChangedEventArgs e)
+        {
+            mail.FromUserId = (Int32)fromUsersComboBox.SelectedItem;
         }
     }
 }

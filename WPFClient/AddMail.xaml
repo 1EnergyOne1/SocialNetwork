@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="AddMail" Height="450" Width="800">
     <Grid>
-        <ComboBox HorizontalAlignment="Left" x:Name="usersComboBox" Margin="330,57,0,0" VerticalAlignment="Top" Width="440" SelectionChanged="selectedUser"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="toUsersComboBox" Margin="330,57,0,0" VerticalAlignment="Top" Width="440" SelectionChanged="selectedToUser"/>
+        <ComboBox HorizontalAlignment="Left" x:Name="fromUsersComboBox" Margin="330,99,0,0" VerticalAlignment="Top" Width="440" SelectionChanged="selectedFromUser"/>
         <TextBlock HorizontalAlignment="Left" Margin="45,60,0,0" TextWrapping="Wrap" Text="Кому" VerticalAlignment="Top" RenderTransformOrigin="4.181,0.88" Width="43"/>
+        <TextBlock HorizontalAlignment="Left" Margin="45,102,0,0" TextWrapping="Wrap" Text="От кого" VerticalAlignment="Top" RenderTransformOrigin="4.181,0.88" Width="43"/>
         <TextBox HorizontalAlignment="Left" x:Name="textMessage" Margin="45,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="725" Height="198"/>
         <Button Content="Сохранить" HorizontalAlignment="Left" Margin="165,374,0,0" VerticalAlignment="Top" Height="42" Width="155" Foreground="White" Click="AddMessage">
             <Button.Background>
@@ -26,5 +28,6 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+        
     </Grid>
 </Window>

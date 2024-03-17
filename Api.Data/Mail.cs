@@ -26,7 +26,7 @@ public partial class Mail
             {
                 Id = v.Id,
                 ToUserId = v.Touserid,
-                FromUserId = v.Fromuserud,
+                FromUserId = v.Fromuserid,
                 DateSend = v.Datesend,
                 Message = v.Message,
             };

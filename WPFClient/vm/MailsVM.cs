@@ -12,16 +12,11 @@ namespace WPFClient.vm
     public class MailsVM
     {
         public Mail Data { get; set; }
-        CRUDMailsService CRUDMailsService { get; set; }
+        CRUDMailsService CRUDMailsService = new CRUDMailsService();
 
         public async Task<Mail?> AddMail(Mail mail)
         {
             return await CRUDMailsService.AddMail(mail);
-        }
-
-        public async Task<Mail?> UpdateMail(Mail mail)
-        {
-            return await CRUDMailsService.UpdateMail(mail);
         }
 
         public async Task<IEnumerable<DtoMail>?> GetAllMails()
