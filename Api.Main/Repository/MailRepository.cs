@@ -20,11 +20,11 @@ namespace Api.Main.Repository
             }
         }
 
-        public async Task<IEnumerable<Mail>?> GetAllMailsForUser(int userId, CancellationToken ct)
+        public async Task<IEnumerable<Mail>?> GetAllMailsForUser(int fromUserId, CancellationToken ct)
         {
             try
             {
-                return await db.Mails.Where(x => x.Userid == userId).ToArrayAsync(ct);
+                return await db.Mails.Where(x => x.FromUserId == fromUserId).ToArrayAsync(ct);
             }
             catch (Exception ex)
             {
@@ -65,6 +65,7 @@ namespace Api.Main.Repository
             {
                 var res = await db.Mails.Where(x => x.Id == mailId).FirstOrDefaultAsync(ct);
                 db.Mails.Remove(res);
+                db.SaveChanges();
                 return true;
             }
             catch (Exception ex)

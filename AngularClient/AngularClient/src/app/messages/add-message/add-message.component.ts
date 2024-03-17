@@ -24,17 +24,6 @@ export class AddMessageComponent implements OnInit {
     users: User[] = [];
     selection: any;
 
-    private _userId: number = 0;
-
-    public get userId(): number {
-        return this._userId;
-    }
-
-    public set userId(value: number) {
-        this._userId = value;
-        this.mail.userid = value;
-    }
-
     constructor(private _MailServices: MailServices, private _UserServices: UserServices, public dialogRef: MatDialogRef<AddMessageComponent>,
         @Inject(MAT_DIALOG_DATA) public data: Mail,) { }
     ngOnInit(): void {

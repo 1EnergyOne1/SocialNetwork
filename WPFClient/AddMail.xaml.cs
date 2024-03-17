@@ -36,10 +36,10 @@ namespace WPFClient
             InitializeComponent();
         }
 
-        public AddMail(int userId)
+        public AddMail(int toUserId)
         {
             InitializeComponent();
-            mail.UserId = userId;
+            mail.ToUserId = toUserId;
             getAllUsers();
             if (mail.Id != 0 || mail.Id != 1)
                 getMailAsync();

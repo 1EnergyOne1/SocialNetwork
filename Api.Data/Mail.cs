@@ -9,13 +9,13 @@ public partial class Mail
 {
     public int Id { get; set; }
 
-    public int Userid { get; set; }
+    public int ToUserId { get; set; }
 
-    public LocalDateTime Datesend { get; set; }
+    public int FromUserId { get; set; }
+
+    public LocalDateTime DateSend { get; set; }
 
     public string? Message { get; set; }
-
-    public virtual User User { get; set; } = null!;
 
     public static explicit operator Mail(DtoMail? v)
     {
@@ -24,10 +24,11 @@ public partial class Mail
         {
             return new Mail
             {
-                Id = v.id,
-                Userid = v.userid,
-                Datesend = v.datesend,
-                Message = v.message
+                Id = v.Id,
+                ToUserId = v.Touserid,
+                FromUserId = v.Fromuserud,
+                DateSend = v.Datesend,
+                Message = v.Message,
             };
         }
     }
