@@ -65,6 +65,7 @@ namespace Api.Main.Repository
             {
                 var res = await db.Mails.Where(x => x.Id == mailId).FirstOrDefaultAsync(ct);
                 db.Mails.Remove(res);
+                db.SaveChanges();
                 return true;
             }
             catch (Exception ex)

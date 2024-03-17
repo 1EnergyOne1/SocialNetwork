@@ -16,6 +16,7 @@ export class MessagesComponent {
   @Input()
   user: User = new User();
   mails: Mail[] = [];
+  clickedRows = new Set<User>();
 
   constructor(private _mailService: MailServices, public dialog: MatDialog) { }
   ngOnInit(): void {
@@ -47,6 +48,15 @@ export class MessagesComponent {
   }
 
   async deleteMail() {
-
+    this.clickedRows.forEach(element => {
+      if (element.id)
+        this._mailService.deleteMail(element.id).then(
+          result => {
+            this.getMessagesFromUser();
+          },
+          error => {
+          }
+        )
+    })
   }
 }
