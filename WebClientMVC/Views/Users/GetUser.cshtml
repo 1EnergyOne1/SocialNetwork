@@ -1,0 +1,23 @@
+﻿@using Api.Data;
+@model User
+
+<h1>Текущий администратор</h1>
+<label>Логин:</label>
+<br />
+<h3>@Model.Login.</h3>
+<label>Пароль:</label>
+<br />
+<h3>@Model.Password</h3>
+<label>Имя:</label>
+<br />
+<h3>@Model.Name</h3>
+<label>Фамилия:</label>
+<br />
+<h3>@Model.Lastname</h3>
+<label>Возраст:</label>
+<br />
+<h3>@Model.Age</h3>
+
+<form method="post">    
+    <input type="submit" value="Send" />
+</form>

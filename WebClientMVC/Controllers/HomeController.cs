@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Api.Data;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebClientMVC.Models;
+using WebClientMVC.Services;
 
 namespace WebClientMVC.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly UserService _userService = new UserService();
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -13,20 +17,28 @@ namespace WebClientMVC.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+           return View("Index");
         }
-
-        public IActionResult Privacy()
+        [HttpPost]
+        public async Task<IActionResult> IndexAsync(string login, string password)
         {
-            return View();
-        }
+            User user = new User();
+            user.Login = login;
+            user.Password = password;
+            var res = await _userService.GetUser(login, password);
+            if (res != null && res.Isadmin == true)
+            {
+                return RedirectToAction("GetUser", "Users", res);
+            }
+            else
+            {
+                return View("Error");
+            }    
+        } 
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+
     }
 }

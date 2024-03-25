@@ -47,5 +47,12 @@ namespace Api.Main.Controllers
         {
             return await users.DeleteUser(id, ct);
         }
+
+        [Route("AdAdmin")]
+        [HttpPost]
+        public async Task<ActionResult<User?>> AddAdmin([FromBody] User user, CancellationToken ct)
+        {
+            return await users.AddAdmin(user, ct);
+        }
     }
 }
