@@ -23,7 +23,8 @@ namespace WebClientMVC.Controllers
         public async Task<IActionResult> AllUsers()
         {
             var res = await _userService.GetAllUsers();
-            return View(res);
+            var admins = res.Where(x => x.Isadmin == true);
+            return View(admins);
         }
 
         [HttpPost]
