@@ -94,5 +94,21 @@ namespace WebClientMVC.Repository
                 return null;
             }
         }
+
+        public async Task<User?> AddAdmin(User user)
+        {
+            try
+            {                
+                var jsonContent = JsonContent.Create(user);
+                var response = await httpClient.PostAsync($"https://localhost:7164/api/users/AddAdmin", jsonContent).ConfigureAwait(false);
+                var res = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var newUser = JsonSerializer.Deserialize<DtoUser>(res);
+                return (User)newUser;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

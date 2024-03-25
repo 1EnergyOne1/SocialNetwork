@@ -23,15 +23,15 @@ namespace WebClientMVC.Controllers
            return View("Index");
         }
         [HttpPost]
-        public IActionResult Index(string login, string password)
+        public async Task<IActionResult> IndexAsync(string login, string password)
         {
             User user = new User();
             user.Login = login;
             user.Password = password;
-            var res = _userService.GetUser(login, password);
-            if (res != null)
+            var res = await _userService.GetUser(login, password);
+            if (res != null && res.Isadmin == true)
             {
-                return RedirectToAction("GetUser", "Users", user);
+                return RedirectToAction("GetUser", "Users", res);
             }
             else
             {

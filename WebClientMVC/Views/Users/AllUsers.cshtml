@@ -1,0 +1,21 @@
+﻿@using Api.Data;
+<h3>Все администраторы:</h3>
+@model List<User>
+<ul>
+    @foreach(var user in Model)
+    {
+        <label>@user.Login</label>
+        <label>@user.Name</label>
+        <label>@user.Lastname</label>
+        <br />
+        <br />
+    }
+</ul>
+
+<form method="post">
+    <label>Логин:</label><br />
+    <input name='login' /><br />
+    <label>Пароль:</label><br />
+    <input type='text' name='password' /><br />
+    <input type="submit" value="Send" />
+</form>

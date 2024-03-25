@@ -32,5 +32,10 @@ namespace WebClientMVC.Services
         {
             return _repository.DeleteUser(user);
         }
+
+        public Task<User?> AddAdmin(User user)
+        {
+            return _repository.AddAdmin(user);
+        }
     }
 }

@@ -80,5 +80,31 @@ namespace Api.Main.Repository
                 return null;
             }
         }
+
+        public async Task<User?> AddAdmin(User user, CancellationToken ct)
+        {
+            try
+            {
+                if (user.Isadmin == false)
+                {
+                    user.Isadmin = true;
+                }
+                if (user.Id == 0)
+                {
+                    var res = await db.Users.CountAsync(ct);
+                    user.Id = res + 1;
+                }
+                db.Users.Add(user);
+                db.SaveChanges();
+                return await db.Users.Where(x => x.Login == user.Login && x.Password == user.Password).FirstOrDefaultAsync(ct);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
+
+
+
