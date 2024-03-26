@@ -19,7 +19,7 @@ public partial class User
 
     public int? Age { get; set; }
 
-    public LocalDateTime Datecreate { get; set; }
+    public DateTime Datecreate { get; set; }
 
     public bool Isadmin { get; set; }
 

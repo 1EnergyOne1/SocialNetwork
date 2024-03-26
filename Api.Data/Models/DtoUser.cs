@@ -21,7 +21,7 @@ namespace Api.Data.Models
 
         public int? age { get; set; }
 
-        public LocalDateTime datecreate { get; set; }
+        public DateTime datecreate { get; set; }
 
         public bool isadmin { get; set; }
     }
