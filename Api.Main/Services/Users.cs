@@ -32,7 +32,7 @@ namespace Api.Main.Services
             return users.DeleteUser(id, ct);
         }
 
-        public Task<bool?> AddAdmin(User user, CancellationToken ct)
+        public Task<User?> AddAdmin(User user, CancellationToken ct)
         {
             return users.AddAdmin(user, ct);
         }
