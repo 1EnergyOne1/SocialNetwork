@@ -43,11 +43,5 @@ namespace Api.Main.Services
         {
             return users.AddAdmin(user, ct);
         }
-
-        public async void GetMongoUser()
-        {
-            var res = await mongo.GetAsync();
-            var result = res;
-        }
     }
 }
