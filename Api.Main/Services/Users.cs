@@ -1,6 +1,7 @@
 ﻿using Api.Data;
 using Api.Data.Models;
 using Api.Main.ADORepository;
+using Api.Main.MongoRepository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Main.Services
@@ -9,6 +10,8 @@ namespace Api.Main.Services
     {
         Repository.Users users = new Repository.Users();
         UsersADORepository repositoryADO = new UsersADORepository();
+
+
         public async Task<User?> GetUser(string login, string password, CancellationToken ct)
         {            
             //return await users.GetUserAsync(login, password, ct);
@@ -39,6 +42,12 @@ namespace Api.Main.Services
         public Task<User?> AddAdmin(User user, CancellationToken ct)
         {
             return users.AddAdmin(user, ct);
+        }
+
+        public async void GetMongoUser()
+        {
+            var res = await mongo.GetAsync();
+            var result = res;
         }
     }
 }
