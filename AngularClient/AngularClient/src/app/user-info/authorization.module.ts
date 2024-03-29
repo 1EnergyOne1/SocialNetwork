@@ -10,6 +10,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MessagesModule } from '../messages/messages.module';
 import { AllUsersModule } from '../all-users/all-users.module';
+import { MongoServices } from 'src/Services/MongoService';
 
 @NgModule({
   declarations: [AuthorizationComponent
@@ -26,6 +27,6 @@ import { AllUsersModule } from '../all-users/all-users.module';
     AllUsersModule
   ],
   exports: [AuthorizationComponent],
-  providers: [UserServices]
+  providers: [UserServices, MongoServices]
 })
 export class AuthorizationModule { }

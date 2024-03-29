@@ -17,7 +17,6 @@ namespace Api.Main.Controllers
         [HttpGet]
         public async Task<ActionResult<User?>> GetUser([FromQuery] string login, [FromQuery] string password, CancellationToken ct)
         {
-            users.GetMongoUser();
             return await users.GetUser(login, password, ct);
         }
 

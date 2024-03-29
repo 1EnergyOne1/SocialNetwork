@@ -19,8 +19,19 @@ namespace Api.Main.MongoRepository
 
         public async Task<List<MongoUsers>> GetAsync() => await _usersCollection.Find(_ => true).ToListAsync();
 
-        public async Task<MongoUsers?> GetAsync(string id) =>
-        await _usersCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
+        public async Task<MongoUsers?> GetAsync(string id)
+        {
+            try
+            {
+                var res = await _usersCollection.Find(x => x.FirstName == id).FirstOrDefaultAsync();
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
 
         public async Task CreateAsync(MongoUsers newUser) =>
             await _usersCollection.InsertOneAsync(newUser);

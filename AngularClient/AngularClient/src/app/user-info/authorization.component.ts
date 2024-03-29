@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { MongoServices } from "src/Services/MongoService";
 import { UserServices } from "src/Services/UserService";
 import { User } from "src/models/user";
 
@@ -14,10 +15,19 @@ export class AuthorizationComponent {
   user: User = new User();
   Islogged: boolean = false;
 
-  constructor(private _UserServices: UserServices) { }
+  constructor(private _UserServices: UserServices, private _mongoService: MongoServices) { }
 
   async getUser() {
-    this._UserServices.getUser(this.login, this.password).then(
+    await this._mongoService.getUser("Antony").then(
+      result => {
+        let s = result;
+      },
+      error => {
+        let r = error;
+      }
+    );  
+
+    await this._UserServices.getUser(this.login, this.password).then(
       result => {
         this.user = result as User;
         let s = this.user;
