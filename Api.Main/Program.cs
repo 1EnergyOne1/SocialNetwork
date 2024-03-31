@@ -1,4 +1,13 @@
+using Api.Data.Models;
+using Api.Main.MongoRepository;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.Configure<MongoUsersDatabaseSettings>(
+    builder.Configuration.GetSection("UsersDatabase"));
+
+builder.Services.AddSingleton<MongoUsersRepository>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
