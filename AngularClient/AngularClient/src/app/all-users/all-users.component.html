@@ -1,8 +1,8 @@
 <div class="table-view">
     <table mat-table class="table-content" [dataSource]="users">
         <ng-container matColumnDef="Имя">
-            <th mat-header-cell *matHeaderCellDef> Имя </th>
-            <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+            <th mat-header-cell *matHeaderCellDef [ngStyle]="{'width' : '100px'}"> Имя </th>
+            <td mat-cell *matCellDef="let user" > {{user.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Фамилия">
