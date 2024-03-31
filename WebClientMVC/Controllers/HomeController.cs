@@ -17,9 +17,12 @@ namespace WebClientMVC.Controllers
             _logger = logger;
         }
 
+        public HomeController() { }
+
         [HttpGet]
         public IActionResult Index()
         {
+           ViewData["Index"] = "Hello, World!";
            return View("Index");
         }
         [HttpPost]
