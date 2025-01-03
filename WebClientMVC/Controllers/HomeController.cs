@@ -11,6 +11,7 @@ namespace WebClientMVC.Controllers
         private readonly UserService _userService = new UserService();
 
         private readonly ILogger<HomeController> _logger;
+        public HomeController() { }
 
         public HomeController(ILogger<HomeController> logger)
         {
