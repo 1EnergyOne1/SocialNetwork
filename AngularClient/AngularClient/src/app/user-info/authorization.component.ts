@@ -18,19 +18,19 @@ export class AuthorizationComponent {
   constructor(private _UserServices: UserServices, private _mongoService: MongoServices) { }
 
   async getUser() {
-    await this._mongoService.getUser("Antony").then(
+    /* await this._mongoService.getUser("Antony").then(
       result => {
         let s = result;
       },
       error => {
         let r = error;
       }
-    );  
+    );  */ 
 
     await this._UserServices.getUser(this.login, this.password).then(
       result => {
         this.user = result as User;
-        let s = this.user;
+        let s = result;
         this.Islogged = true;
       },
       error => {

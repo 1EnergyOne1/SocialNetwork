@@ -12,7 +12,16 @@
     </div>
 </div>
 <hr />
-<mat-tab-group class="mat-tab-view" *ngIf="Islogged">
+<div>
+    <span *ngIf="Islogged">
+        <input matInput [(ngModel)]="user.login" placeholder="Логин">
+        <input matInput [(ngModel)]="user.password" placeholder="Пароль" />
+    </span>
+    <span *ngIf="!Islogged">
+        Сервер не ответил
+    </span>
+</div>
+<!-- <mat-tab-group class="mat-tab-view" *ngIf="Islogged">
     <mat-tab label="Информация о пользователе" class="mat-tab-content">
         <main-user-view [user]="user"></main-user-view>
     </mat-tab>
@@ -22,4 +31,4 @@
     <mat-tab *ngIf="user?.isadmin == true" label="Таблица пользователей" class="mat-tab-content">
         <all-users></all-users>
     </mat-tab>
-</mat-tab-group>
+</mat-tab-group> -->
