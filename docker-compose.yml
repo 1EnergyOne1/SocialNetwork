@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./Api.Main
+    ports:
+      - "5000:80"
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./AngularClient/AngularClient
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
